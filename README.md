@@ -202,4 +202,3 @@ console.log("Texto cifrado:", cifrar("Información Sensible"));
 ## 📚 Licencia
 
 Este proyecto está bajo la licencia **MIT**.
-
