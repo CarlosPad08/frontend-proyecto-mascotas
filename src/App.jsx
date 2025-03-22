@@ -1,12 +1,11 @@
-import './App.css'
+import Principal from "./pages/Principal.jsx";
 
 function App() {
-
   return (
-    <>
-      <h1>MiMascota</h1>
-    </>
-  )
+    <div>
+      <Principal />
+    </div>
+  );
 }
 
-export default App
+export default App;
