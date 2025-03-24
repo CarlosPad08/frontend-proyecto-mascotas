@@ -6,7 +6,7 @@ const Login = ({ onClose }) => {
     <div className="login-overlay" onClick={onClose}>
       <div className="login-container" onClick={(e) => e.stopPropagation()}>
         <div className="login-icon">
-          <img src="/assets/user-icon.png" alt="Usuario" />
+          <img src="/assets/user-icon.jpg" alt="Usuario" />
         </div>
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Contraseña" />

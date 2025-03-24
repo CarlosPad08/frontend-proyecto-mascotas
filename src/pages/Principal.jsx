@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/principal.css";
 
-const Principal = ({ onLoginClick }) => {
+const Principal = ({ onLoginClick, onRegisterClick }) => {
   return (
     <div className="container">
       <header className="banner">
@@ -12,7 +12,7 @@ const Principal = ({ onLoginClick }) => {
         </nav>
         <div className="auth-buttons">
           <button className="login" onClick={onLoginClick}>Ingresar</button>
-          <button className="register">Registrarse</button>
+          <button className="register" onClick={onRegisterClick}>Registrarse</button>
         </div>
       </header>
 

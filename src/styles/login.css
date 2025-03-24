@@ -1,7 +1,7 @@
 /* Aplicamos el desenfoque SOLO al contenido de fondo */
 .blur-background {
     filter: blur(5px);
-    transition: 0s ease-in-out;
+    transition: 0.01s ease-in-out;
     pointer-events: none; /* Evita que se interactúe con el fondo mientras está el login */
   }
   
