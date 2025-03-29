@@ -1,0 +1,294 @@
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --font-body: 'Poppins', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+
+/* Estilos generales de tipografu00eda */
+body {
+    font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.5px;
+}
+
+.signup-container {
+    display: flex;
+    height: 100vh;
+    background-color: var(--color-secondary);
+}
+
+.left-section {
+    flex: 1;
+    background: var(--color-quinary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+}
+
+.left-section h1 {
+    margin: 0 0 0 0;
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -1px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.left-section h1::after {
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-quaternary));
+    border-radius: 2px;
+}
+
+.left-section p {
+    margin: 0 0 2rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.left-section img {
+    width: 100%;
+    max-width: 400px;
+}
+
+.right-section {
+    flex: 1;
+    flex-direction: column;
+    background: var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-section .signup-atras {
+    position: absolute;
+    top: 40px;
+    left: 840px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.right-section .signup-atras:hover {
+    color: var(--color-blanco);
+}
+
+.signup-box {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    height: 400px;
+}
+
+.signup-info {
+    padding: 0 25px 0 25px;
+    word-spacing: 1px;
+    text-align: start;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.signup-info .signup-signin {
+    position: absolute;
+    color: var(--color-gris);
+    top: 113px;
+    right: 150px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.signup-info .signup-signin:hover {
+    color: var(--color-primary);
+}
+
+.signup-info h2 {
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.8rem;
+    letter-spacing: -0.5px;
+    position: relative;
+}
+
+.signup-info h2::after {
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-secondary), var(--color-quaternary));
+    border-radius: 2px;
+}
+
+.signup-info-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.signup-box button {
+    width: 12rem;
+    padding: 12px 20px;
+    background: var(--color-quaternary);
+    color: var(--color-negro);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.2);
+    transition: all 0.3s ease;
+}
+
+.signup-box button:hover {
+    background-color: var(--color-tertiary);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
+}
+
+.signup-box button:active {
+    transform: scale(0.95);
+    background: var(--color-tertiary);
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+    padding-top: 10px;
+    width: 90%;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 9px 0;
+    font-size: 16px;
+    font-family: var(--font-body);
+    border: none;
+    color: var(--color-negro);
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+  
+/* Efecto cuando el input estu00e1 enfocado */
+.input-group input:focus {
+    border-bottom: 2px solid var(--color-primary);
+}
+  
+/* Label flotante */
+.input-group label {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    color: #aaa;
+    transition: 0.3s ease-in-out;
+}
+  
+/* Si el input tiene texto o estu00e1 enfocado, el label sube */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+    top: -12px;
+    font-size: 12px;
+    color: var(--color-primary);
+    font-weight: 500;
+}
+  
+/* Botu00f3n "show" para ver la contraseu00f1a */
+.show-password {
+    position: absolute;
+    right: 0;
+    top: 8px;
+    font-size: 12px;
+    color: gray;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.show-password:hover {
+    color: var(--color-primary);
+}
+
+.signup-others {
+    margin-top: 20px;
+}
+
+.signup-others p {
+    color: var(--color-negro);
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.signup-others button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    background: var(--color-secondary);
+    color: var(--color-negro);
+    border: none;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.signup-others button:hover {
+    background-color: var(--color-tertiary);
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
+}
+
+.signup-others button:active {
+    transform: scale(0.98);
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
+}

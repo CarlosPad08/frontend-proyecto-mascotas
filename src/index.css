@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -11,4 +13,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Definimos los colores como custom prop */
+  --color-primary: #1AD659;
+  --color-secondary: #3EE074;
+  --color-tertiary: #5FF791;
+  --color-quaternary: #8CFFB3;
+  --color-quinary: #deffe9;
+  --color-blanco: #FFFFFF;
+  --color-negro: #000000;
+  
+  /* Fuentes */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Poppins', sans-serif;
 }
