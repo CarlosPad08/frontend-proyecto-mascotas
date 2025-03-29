@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import SignUp from './pages/SignUp.jsx'
+import './App.css'
 
 function App() {
-
   return (
-    <div>
-      <h1>Welcome to the React App</h1>
-    </div>
-  );
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<Home />} />
+      </Routes>
+    </Router>
+  )
 }
 
 export default App;

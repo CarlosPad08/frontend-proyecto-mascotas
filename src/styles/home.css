@@ -1,0 +1,195 @@
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+
+/* Estilos generales de tipografía */
+body {
+    font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.5px;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-quinary-light);
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-navbar {
+    height: 20vh;
+    padding: 0 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-primary);
+}
+
+.navbar-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.navbar-logo {
+    margin-right: 10px;
+}
+
+.navbar-logo img {
+    margin-top: 4px;
+    max-width: 30px;
+}
+
+.navbar-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+}
+
+.navbar-links {
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-links p {
+    margin: 0 0 0 10px;
+    font-weight: 500;
+}
+
+.navbar-links span {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-links span:hover {
+    outline: none;
+    text-decoration: underline;
+    color: var(--color-primary);
+}
+
+.home-span-about {
+    margin-top: 8px;
+    margin-left: 1rem;
+    color: var(--color-secondary);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.home-span-about:hover {
+    outline: none;
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.info-container {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.info {
+    width: 80%;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+}
+
+.info h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    /* Eliminando la propiedad no estándar */
+    /* text-fill-color: transparent; */
+    letter-spacing: -1px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.info h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-quaternary));
+    border-radius: 2px;
+}
+
+.info p {
+    line-height: 1.8;
+    color: var(--color-negro);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+}
+
+.info-boton button {
+    width: 200px;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: var(--color-quaternary);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-negro);
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-boton button:hover {
+    background-color: var(--color-tertiary);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
+}
+
+.info-boton button:active {
+    transform: scale(0.95);
+    background-color: var(--color-primary);
+    box-shadow: 0 2px 5px rgba(26, 214, 89, 0.2);
+}
+
+.info-image {
+    position: absolute;
+    top: 90px;
+    left: 700px;
+    height: 500px;
+    width: 500px;
+}
+
+.info-image img {
+    max-width: 500px;
+}
