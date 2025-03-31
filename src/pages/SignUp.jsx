@@ -12,10 +12,41 @@ function SignUp() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos de registro:', formData);
-    // Aquí iría la lógica para autenticar al usuario
+  
+    // Validaciones básicas
+    if (!formData.firstname.trim()) {
+      alert("Por favor, ingresa tu nombre.");
+      return;
+    }
+    if (!formData.lastname.trim()) {
+      alert("Por favor, ingresa tu apellido.");
+      return;
+    }
+    if (!formData.email.trim()) {
+      alert("Por favor, ingresa un correo electrónico.");
+      return;
+    }
+    // Validación básica de formato de correo
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      alert("Por favor, ingresa un correo válido.");
+      return;
+    }
+    if (!formData.password.trim()) {
+      alert("Por favor, ingresa una contraseña.");
+      return;
+    }
+    if (formData.password.length < 6) {
+      alert("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+  
+    // Si pasa todas las validaciones
+    console.log("Datos de registro:", formData);
+    alert("Registro exitoso");
+    // Aquí podrías enviar los datos al backend
   };
-
+  
   // Estado para mostrar/ocultar la contraseña
   const [showPassword, setShowPassword] = useState(false);
 
@@ -103,10 +134,11 @@ function SignUp() {
                     {showPassword ? "ocultar" : "mostrar"}
                   </span>
                 </div>
-              </form>
-            </div>
-            <div className="signup-button">
+                <div className="signup-button">
               <button>Registrate</button>
+            </div>
+                {/*<button ClassName="signup-button" type="submit">Registrate</button> */}
+              </form>
             </div>
           </div>
         </div>

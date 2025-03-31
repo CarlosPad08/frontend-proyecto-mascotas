@@ -1,4 +1,7 @@
-:root {
+/* =====================
+   Variables globales
+   ===================== */
+   :root {
     --color-primary: #1AD659;
     --color-secondary: #3EE074;
     --color-tertiary: #5FF791;
@@ -9,25 +12,30 @@
     --color-gris: #5c5c5c;
     --font-body: 'Poppins', sans-serif;
     --font-heading: 'Montserrat', sans-serif;
-}
-
-/* Estilos generales de tipografu00eda */
-body {
+  }
+  
+  body {
     font-family: var(--font-body);
-}
-
-h1, h2, h3, h4, h5, h6 {
+    background-color: var(--color-secondary);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
     letter-spacing: -0.5px;
-}
-
-.signup-container {
+  }
+  
+  .signup-container {
     display: flex;
     height: 100vh;
     background-color: var(--color-secondary);
-}
-
-.left-section {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  .left-section {
     flex: 1;
     background: var(--color-quinary);
     display: flex;
@@ -36,16 +44,13 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding: 20px;
     clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
-}
-
-.left-section h1 {
-    margin: 0 0 0 0;
-    font-family: var(--font-heading);
+  }
+  
+  .left-section h1 {
     font-size: 3rem;
     font-weight: 800;
     color: var(--color-primary);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    line-height: 1.2;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -53,9 +58,12 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: -1px;
     position: relative;
     transition: all 0.3s ease;
-}
-
-.left-section h1::after {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .left-section h1::after {
+    content: '';
     position: absolute;
     bottom: -10px;
     left: 0;
@@ -63,146 +71,126 @@ h1, h2, h3, h4, h5, h6 {
     height: 4px;
     background: linear-gradient(90deg, var(--color-primary), var(--color-quaternary));
     border-radius: 2px;
-}
-
-.left-section p {
-    margin: 0 0 2rem 0;
+  }
+  
+  .left-section p {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--color-primary);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.left-section img {
+    text-align: center;
+  }
+  
+  .left-section img {
     width: 100%;
     max-width: 400px;
-}
-
-.right-section {
+    margin-top: 2rem;
+  }
+  
+  .right-section {
     flex: 1;
-    flex-direction: column;
-    background: var(--color-secondary);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.right-section .signup-atras {
+    background: var(--color-secondary);
+    position: relative;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .signup-atras {
     position: absolute;
-    top: 40px;
-    left: 840px;
+    top: 20px;
+    left: 20px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
-}
-
-.right-section .signup-atras:hover {
+    z-index: 1;
+    background-color: transparent;
+    padding: 0.25rem 0.5rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .signup-atras:hover {
     color: var(--color-blanco);
-}
-
-.signup-box {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 2fr;
+  }
+  
+  .signup-box {
     background: white;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 400px;
-    height: 400px;
-}
-
-.signup-info {
-    padding: 0 25px 0 25px;
-    word-spacing: 1px;
-    text-align: start;
+    width: 100%;
+    max-width: 400px;
+    padding: 1.5rem;
+    box-sizing: border-box;
     display: flex;
-    align-items: center;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.signup-info .signup-signin {
-    position: absolute;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .signup-info {
+    text-align: center;
+    position: relative;
+    width: 100%;
+  }
+  
+  .signup-signin {
+    display: block;
+    margin-top: 0.5rem;
     color: var(--color-gris);
-    top: 113px;
-    right: 150px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
-}
-
-.signup-info .signup-signin:hover {
+  }
+  
+  .signup-signin:hover {
     color: var(--color-primary);
-}
-
-.signup-info h2 {
+  }
+  
+  .signup-info h2 {
     color: var(--color-secondary);
-    margin-bottom: 20px;
-    font-family: var(--font-heading);
+    margin-bottom: 10px;
     font-weight: 700;
     font-size: 1.8rem;
     letter-spacing: -0.5px;
     position: relative;
-}
-
-.signup-info h2::after {
+  }
+  
+  .signup-info h2::after {
+    content: '';
     position: absolute;
     bottom: -8px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 40px;
     height: 3px;
     background: linear-gradient(90deg, var(--color-secondary), var(--color-quaternary));
     border-radius: 2px;
-}
-
-.signup-info-form {
+  }
+  
+  .signup-info-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-}
-
-.signup-box button {
-    width: 12rem;
-    padding: 12px 20px;
-    background: var(--color-quaternary);
-    color: var(--color-negro);
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.2);
-    transition: all 0.3s ease;
-}
-
-.signup-box button:hover {
-    background-color: var(--color-tertiary);
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
-}
-
-.signup-box button:active {
-    transform: scale(0.95);
-    background: var(--color-tertiary);
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
-}
-
-.form-container {
-    padding-top: 10px;
-    width: 90%;
-}
-
-.input-group {
+    width: 100%;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .input-group {
     position: relative;
     margin-bottom: 20px;
-}
-
-.input-group input {
+  }
+  
+  .input-group input {
     width: 100%;
     padding: 9px 0;
     font-size: 16px;
@@ -213,35 +201,30 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
     background: transparent;
     transition: all 0.3s ease;
-}
+  }
   
-/* Efecto cuando el input estu00e1 enfocado */
-.input-group input:focus {
+  .input-group input:focus {
     border-bottom: 2px solid var(--color-primary);
-}
+  }
   
-/* Label flotante */
-.input-group label {
+  .input-group label {
     position: absolute;
     left: 0;
     top: 10px;
     font-size: 14px;
-    font-family: var(--font-body);
     color: #aaa;
     transition: 0.3s ease-in-out;
-}
+  }
   
-/* Si el input tiene texto o estu00e1 enfocado, el label sube */
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
+  .input-group input:focus + label,
+  .input-group input:not(:placeholder-shown) + label {
     top: -12px;
     font-size: 12px;
     color: var(--color-primary);
     font-weight: 500;
-}
+  }
   
-/* Botu00f3n "show" para ver la contraseu00f1a */
-.show-password {
+  .show-password {
     position: absolute;
     right: 0;
     top: 8px;
@@ -249,28 +232,56 @@ h1, h2, h3, h4, h5, h6 {
     color: gray;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-
-.show-password:hover {
+    background-color: white;
+    padding: 0 5px;
+  }
+  
+  .show-password:hover {
     color: var(--color-primary);
-}
-
-.signup-others {
-    margin-top: 20px;
-}
-
-.signup-others p {
+  }
+  
+  .signup-button {
+    width: 100%;
+  }
+  
+  .signup-button button {
+    width: 100%;
+    padding: 12px 20px;
+    background: var(--color-quaternary);
+    color: var(--color-negro);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .signup-button button:hover {
+    background-color: var(--color-tertiary);
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
+  }
+  
+  .signup-others {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .signup-others p {
     color: var(--color-negro);
     font-weight: 400;
     font-size: 0.9rem;
     margin-bottom: 15px;
-}
-
-.signup-others button {
+  }
+  
+  .signup-others button {
     width: 100%;
     padding: 12px;
-    font-size: 1.1rem;
-    font-family: var(--font-heading);
+    font-size: 1rem;
     font-weight: 600;
     background: var(--color-secondary);
     color: var(--color-negro);
@@ -280,15 +291,48 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
-}
-
-.signup-others button:hover {
+  }
+  
+  .signup-others button:hover {
     background-color: var(--color-tertiary);
     transform: scale(1.02);
     box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
-}
-
-.signup-others button:active {
-    transform: scale(0.98);
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
-}
+  }
+  
+  @media (max-width: 768px) {
+    .signup-container {
+      flex-direction: column;
+      height: auto;
+      align-items: center;
+    }
+  
+    .left-section,
+    .right-section {
+      width: 100%;
+      flex: none;
+      clip-path: none;
+    }
+  
+    .signup-box {
+      max-width: 90%;
+      margin-top: 2rem;
+    }
+  
+    .signup-info h2 {
+      font-size: 1.5rem;
+    }
+  
+    .left-section h1 {
+      font-size: 2rem;
+    }
+  
+    .left-section p {
+      font-size: 1rem;
+    }
+  
+    .signup-atras {
+      font-size: 0.85rem;
+      top: 0.75rem;
+      left: 0.75rem;
+    }
+  }

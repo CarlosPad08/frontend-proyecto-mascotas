@@ -55,7 +55,7 @@ function Home() {
               </div>
             </div>
             <div className="info-image">
-              <img src="../public/fondo-aternativo1.png" alt="Placeholder" />
+              <img src="/fondo-aternativo1.png" alt="Placeholder" />
             </div>
           </div>
         )}
