@@ -61,16 +61,16 @@ function SignUp() {
 
   return (
     <div className="signup-container">
-      <div className="left-section">
-        <div className="left-section-title">
+      <div className="signup-left-section">
+        <div className="signup-left-section-title">
           <h1>¡Un nuevo lugar para tú mascota!</h1>
           <p>Regístrate para comenzar a usar nuestra aplicación.</p>
         </div>
-        <div className="illustration">
+        <div className="signup-illustration">
           <img src="../public/ilustracion.png" alt="Illustration" />
         </div>
       </div>
-      <div className="right-section">
+      <div className="signup-right-section">
         <span className="signup-atras" onClick={() => window.history.back()}>&lt; Atras</span>
         <div className="signup-box">
           <div className="signup-info">
@@ -78,9 +78,9 @@ function SignUp() {
             <span className="signup-signin" onClick={() => window.location.href = '/signin'}>Inicia Sesion</span>
           </div>
           <div className="signup-info-form">
-            <div className="form-container">
+            <div className="signup-form-container">
               <form onSubmit={handleSubmit}>
-                <div className="input-group">
+                <div className="signup-input-group">
                   <input
                     type="text"
                     name="firstname"
@@ -93,7 +93,7 @@ function SignUp() {
                   <label htmlFor="firstname">Nombre</label>
                 </div>
 
-                <div className="input-group">
+                <div className="signup-input-group">
                   <input
                     type="text"
                     name="lastname"
@@ -106,7 +106,7 @@ function SignUp() {
                   <label htmlFor='lastname'>Apellido</label>
                 </div>
 
-                <div className="input-group">
+                <div className="signup-input-group">
                   <input
                     type="email"
                     name="email"
@@ -119,7 +119,7 @@ function SignUp() {
                   <label htmlFor='email'>Correo electronico</label>
                 </div>
 
-                <div className="input-group">
+                <div className="signup-input-group">
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
@@ -130,14 +130,13 @@ function SignUp() {
                     required
                   />
                   <label htmlFor='password'>Contraseña</label>
-                  <span className="show-password" onClick={() => setShowPassword(!showPassword)}>
+                  <span className="signup-show-password" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? "ocultar" : "mostrar"}
                   </span>
                 </div>
                 <div className="signup-button">
-              <button>Registrate</button>
-            </div>
-                {/*<button ClassName="signup-button" type="submit">Registrate</button> */}
+                  <button type="submit">Registrate</button>
+                </div>
               </form>
             </div>
           </div>
