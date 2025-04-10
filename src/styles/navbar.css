@@ -1,0 +1,134 @@
+/* =====================
+Variables globales
+===================== */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+  
+/* Modern and minimalist navbar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--color-blanco);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 15px;
+}
+
+.navbar-left, .navbar-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-left {
+    justify-content: flex-start;
+}
+
+.navbar-right {
+    justify-content: flex-end;
+}
+
+.navbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-site-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    letter-spacing: 0.5px;
+}
+
+.navbar-nav-links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+}
+
+.navbar-nav-links li a {
+    text-decoration: none;
+    color: var(--color-gris);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.navbar-nav-links li a:hover {
+    color: var(--color-primary);
+}
+
+/* Default animation (left to right) for left navbar links */
+.navbar-left .navbar-nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-left .navbar-nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Right to left animation for right navbar links */
+.navbar-right .navbar-nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    right: 0; /* Changed from left to right */
+    left: auto; /* Reset left value */
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-right .navbar-nav-links li a:hover::after {
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem;
+    }
+    
+    .navbar-left, .navbar-center, .navbar-right {
+        width: 100%;
+        justify-content: center;
+        margin: 0.5rem 0;
+    }
+    
+    .navbar-nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
