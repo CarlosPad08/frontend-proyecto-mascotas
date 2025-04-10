@@ -1,0 +1,164 @@
+/* =====================
+   Variables globales
+   ===================== */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+
+.card-mascota {
+    width: 300px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--color-blanco);
+    margin: 15px;
+}
+
+.card-mascota:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-mascota-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-mascota-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-mascota:hover .card-mascota-image {
+    transform: scale(1.05);
+}
+
+.card-mascota-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(26, 214, 89, 0.3);
+}
+
+.card-mascota-content {
+    padding: 20px;
+}
+
+.card-mascota-nombre {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    color: var(--color-negro);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.card-mascota-detalles {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--color-gris);
+    font-size: 0.9rem;
+}
+
+.card-mascota-separador {
+    margin: 0 8px;
+    color: var(--color-primary);
+}
+
+.card-mascota-descripcion {
+    margin: 0 0 20px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-gris);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-mascota-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.card-mascota-btn-adoptar {
+    flex: 1.5;
+    padding: 10px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 10px rgba(26, 214, 89, 0.2);
+}
+
+.card-mascota-btn-info {
+    flex: 1;
+    padding: 10px;
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.card-mascota-btn-adoptar:hover {
+    background-color: var(--color-secondary);
+    transform: scale(1.03);
+}
+
+.card-mascota-btn-info:hover {
+    background-color: var(--color-quinary);
+    transform: scale(1.03);
+}
+
+.card-mascota-btn-adoptar:active,
+.card-mascota-btn-info:active {
+    transform: scale(0.98);
+}
+
+/* Paw print decoration */
+.card-mascota::before {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 20px;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='%231AD659' opacity='0.2'%3E%3Cpath d='M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5.3-86.2 32.6-96.8 70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3-14.3-70.1 10.2-84.1 59.7.9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2-25.8 0-46.7-20.9-46.7-46.7v-1.6c0-10.4 1.6-20.8 5.2-30.5zM411.6 198.6c-18.9 32.4-14.3 70.1 10.2 84.1s59.7-.9 78.5-33.3 14.3-70.1-10.2-84.1-59.7.9-78.5 33.3zM285.5 92.9c-14.3 42.9.3 86.2 32.6 96.8s70.1-15.6 84.4-58.5-.3-86.2-32.6-96.8-70.1 15.6-84.4 58.5z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-mascota:hover::before {
+    opacity: 1;
+}
