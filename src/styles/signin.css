@@ -39,12 +39,12 @@
   border-radius: 2px;
 }
 
-.input-group {
+.signin-input-group {
   position: relative;
   margin-bottom: 25px;
 }
 
-.input-group input {
+.signin-input-group input {
   width: 100%;
   padding: 10px 0;
   font-size: 16px;
@@ -57,11 +57,11 @@
   transition: all 0.3s ease;
 }
 
-.input-group input:focus {
+.signin-input-group input:focus {
   border-bottom: 2px solid var(--color-primary);
 }
 
-.input-group label {
+.signin-input-group label {
   position: absolute;
   left: 0;
   top: 10px;
@@ -71,15 +71,15 @@
   transition: 0.3s ease-in-out;
 }
 
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
+.signin-input-group input:focus + label,
+.signin-input-group input:not(:placeholder-shown) + label {
   top: -12px;
   font-size: 12px;
   color: var(--color-primary);
   font-weight: 500;
 }
 
-.show-password {
+.signin-show-password {
   position: absolute;
   right: 0;
   top: 10px;
@@ -89,23 +89,23 @@
   transition: all 0.3s ease;
 }
 
-.show-password:hover {
+.signin-show-password:hover {
   color: var(--color-primary);
 }
 
-.forgot-password {
+.signin-forgot-password {
   text-align: right;
   margin-bottom: 20px;
 }
 
-.forgot-password span {
+.signin-forgot-password span {
   font-size: 14px;
   color: var(--color-gris);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.forgot-password span:hover {
+.signin-forgot-password span:hover {
   color: var(--color-primary);
   text-decoration: underline;
 }
@@ -159,52 +159,27 @@
   font-size: 14px;
 }
 
-.google-signin {
-  width: 100%;
-  padding: 12px 20px;
-  background: #fff;
-  color: #444;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.google-signin:hover {
-  background-color: #f5f5f5;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.signup-link {
+.signin-signup-link {
   text-align: center;
   font-size: 14px;
   color: var(--color-gris);
 }
 
-.signup-link span {
+.signin-signup-link span {
   color: var(--color-primary);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.signup-link span:hover {
+.signin-signup-link span:hover {
   text-decoration: underline;
 }
 
 .signin-container {
   background-color: var(--color-quinary-light);
   width: 100%;
-  padding: 120px 1rem 2rem 1rem; /* espacio para el navbar */
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
