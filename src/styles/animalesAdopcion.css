@@ -1,0 +1,150 @@
+/* =====================
+   Variables globales
+   ===================== */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+}
+
+.animales-adopcion-page {
+    min-height: 100vh;
+    background-color: var(--color-quinary-light);
+}
+
+.container_animales_adopcion {
+    max-width: 100%;
+    display: grid;
+    grid-template-areas: 
+        "banner header header"
+        "banner section section";
+    grid-template-columns: 20% 40% 40%;
+}
+
+.header-section {
+    grid-area: header;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+.banner {
+    grid-area: banner;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    height: 100%;
+}
+
+.banner img {
+    width: 100%;
+    height: 100vh;
+}
+
+.header-section h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-negro);
+    margin-bottom: 1rem;
+}
+
+.header-section p {
+    font-size: 1.1rem;
+    color: var(--color-gris);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.filtros-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filtro-btn {
+    padding: 0.6rem 1.5rem;
+    background-color: var(--color-blanco);
+    border: 2px solid var(--color-quinary);
+    border-radius: 30px;
+    font-weight: 600;
+    color: var(--color-gris);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-btn:hover {
+    background-color: var(--color-quinary);
+    color: var(--color-primary);
+}
+
+.filtro-btn.active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-blanco);
+}
+
+.mascotas-grid {
+    grid-area: section;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header-section h1 {
+        font-size: 2rem;
+    }
+    
+    .header-section p {
+        font-size: 1rem;
+    }
+    
+    .filtros-section {
+        gap: 0.5rem;
+    }
+    
+    .filtro-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Animation for cards when they appear */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mascotas-grid .card-mascota {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: calc(var(--i, 0) * 0.1s);
+    opacity: 0;
+}
+
+.mascotas-grid .card-mascota:nth-child(1) { --i: 1; }
+.mascotas-grid .card-mascota:nth-child(2) { --i: 2; }
+.mascotas-grid .card-mascota:nth-child(3) { --i: 3; }
+.mascotas-grid .card-mascota:nth-child(4) { --i: 4; }
+.mascotas-grid .card-mascota:nth-child(5) { --i: 5; }
+.mascotas-grid .card-mascota:nth-child(6) { --i: 6; }
