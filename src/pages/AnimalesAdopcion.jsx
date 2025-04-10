@@ -71,8 +71,10 @@ function AnimalesAdopcion() {
         </div>
 
         <div className="animales-adopcion-header-section">
-          <h1>Animales para Adopción</h1>
-          <p>Encuentra a tu compañero perfecto entre nuestros adorables amigos que buscan un hogar lleno de amor.</p>
+          <div className="animales-adopcion-header-text">
+            <h1>Animales para Adopción</h1>
+            <p>Encuentra a tu compañero perfecto entre nuestros adorables amigos que buscan un hogar lleno de amor.</p>
+          </div>
 
           <div className="animales-adopcion-filtros-section">
             <button className="animales-adopcion-filtro-btn active">Todos</button>

@@ -50,6 +50,23 @@
     height: 100vh;
 }
 
+.animales-adopcion-header-section {
+    width: 70vw;
+    display: flex;
+    margin: 1rem auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.animales-adopcion-header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4rem;
+}
+
 .animales-adopcion-header-section h1 {
     font-family: var(--font-heading);
     font-size: 2.5rem;
@@ -60,18 +77,19 @@
 .animales-adopcion-header-section p {
     font-size: 1.1rem;
     color: var(--color-gris);
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
 .animales-adopcion-filtros-section {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
     margin-bottom: 1rem;
     margin-top: 2.5rem;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .animales-adopcion-filtro-btn {
@@ -98,16 +116,16 @@
 
 .animales-adopcion-mascotas-grid {
     grid-area: section;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
-    .animales-adopcion-header-section h1 {
-        font-size: 2rem;
+    .animales-adopcion-banner {
+        display: none;
     }
     
     .animales-adopcion-header-section p {
