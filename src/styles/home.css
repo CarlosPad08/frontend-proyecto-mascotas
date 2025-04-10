@@ -35,7 +35,7 @@
     flex-direction: column;
     background: var(--color-quinary-light);
     width: 100vw;
-    min-height: 100vh;
+    height: 100vh;
   }
   
   /* =====================
@@ -50,47 +50,47 @@
     color: var(--color-primary);
   }
   
-  .navbar-menu {
+  .home-navbar-menu {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   
-  .navbar-logo {
+  .home-navbar-logo {
     margin-right: 10px;
   }
   
-  .navbar-logo img {
+  .home-navbar-logo img {
     margin-top: 4px;
     max-width: 30px;
   }
   
-  .navbar-title {
+  .home-navbar-title {
     display: flex;
     flex-direction: row;
     align-items: center;
     font-weight: 600;
   }
   
-  .navbar-links {
+  .home-navbar-links {
     display: flex;
     flex-direction: row;
     align-items: center;
   }
   
-  .navbar-links p {
+  .home-navbar-links p {
     margin: 0 0 0 10px;
     font-weight: 500;
   }
   
-  .navbar-links span {
+  .home-navbar-links span {
     margin-left: 10px;
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;
   }
   
-  .navbar-links span:hover {
+  .home-navbar-links span:hover {
     outline: none;
     text-decoration: underline;
     color: var(--color-primary);
@@ -114,23 +114,24 @@
   /* =====================
      Info container
      ===================== */
-  .info-container {
+  .home-info-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: center;
+    margin-top: -35px;
     padding: 0 80px;
     gap: 2rem;
   }
   
-  .info {
+  .home-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
   }
   
-  .info h1 {
+  .home-info h1 {
     font-size: 3.5rem;
     font-weight: 800;
     color: var(--color-primary);
@@ -147,7 +148,7 @@
     transition: all 0.3s ease;
   }
   
-  .info h1::after {
+  .home-info h1::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -158,7 +159,7 @@
     border-radius: 2px;
   }
   
-  .info p {
+  .home-info p {
     line-height: 1.8;
     color: var(--color-negro);
     font-size: 1.1rem;
@@ -166,7 +167,7 @@
     margin-bottom: 1.5rem;
   }
   
-  .info-boton button {
+  .home-info-boton button {
     width: 200px;
     margin-top: 20px;
     padding: 12px 24px;
@@ -183,19 +184,19 @@
     transition: all 0.3s ease;
   }
   
-  .info-boton button:hover {
+  .home-info-boton button:hover {
     background-color: var(--color-tertiary);
     transform: scale(1.05);
     box-shadow: 0 6px 15px rgba(26, 214, 89, 0.3);
   }
   
-  .info-boton button:active {
+  .home-info-boton button:active {
     transform: scale(0.95);
     background-color: var(--color-primary);
     box-shadow: 0 2px 5px rgba(26, 214, 89, 0.2);
   }
   
-  .info-image {
+  .home-info-image {
     position: relative;
     display: flex;
     justify-content: center;
@@ -205,7 +206,7 @@
     margin-top: 2rem;
   }
   
-  .info-image img {
+  .home-info-image img {
     width: 90%;
     max-width: 500px;
     height: auto;
@@ -225,25 +226,25 @@
         text-align: center;
       }
     
-      .navbar-menu {
+      .home-navbar-menu {
         flex-direction: column;
         align-items: center;
         gap: 0.5rem;
       }
     
-      .navbar-title {
+      .home-navbar-title {
         flex-direction: column;
         align-items: center;
         gap: 0.25rem;
       }
     
-      .navbar-links {
+      .home-navbar-links {
         flex-direction: row;
         justify-content: center;
         gap: 1rem;
       }
   
-    .navbar-title h1 {
+    .home-navbar-title h1 {
       font-size: 1.8rem;
     }
   
@@ -252,7 +253,7 @@
       margin-left: 0;
     }
   
-    .info-container {
+    .home-info-container {
       display: flex;
       flex-direction: column;
       height: auto;
@@ -260,26 +261,26 @@
       gap: 2rem;
     }
   
-    .info {
+    .home-info {
       width: 100%;
       padding: 0;
       text-align: center;
       align-items: center;
     }
   
-    .info h1 {
+    .home-info h1 {
       font-size: 2rem;
     }
   
-    .info p {
+    .home-info p  {
       font-size: 1rem;
     }
   
-    .info-boton button {
+    .home-info-boton button {
       width: 90%;
     }
   
-    .info-image {
+    .home-info-image {
       position: static;
       width: 100%;
       display: flex;
@@ -287,10 +288,9 @@
       margin-top: 2rem;
     }
   
-    .info-image img {
+    .home-info-image img {
       width: 90%;
       max-width: 400px;
       height: auto;
     }
   }
-  
