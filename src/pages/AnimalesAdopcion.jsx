@@ -65,25 +65,25 @@ function AnimalesAdopcion() {
   return (
     <div className="animales-adopcion-page">
       <Navbar />
-      <div className="container_animales_adopcion">
-        <div className="banner">
+      <div className="animales-adopcion-container_animales_adopcion">
+        <div className="animales-adopcion-banner">
           <img src="../public/publicidad.png" alt="Banner" />
         </div>
 
-        <div className="header-section">
+        <div className="animales-adopcion-header-section">
           <h1>Animales para Adopción</h1>
           <p>Encuentra a tu compañero perfecto entre nuestros adorables amigos que buscan un hogar lleno de amor.</p>
 
-          <div className="filtros-section">
-            <button className="filtro-btn active">Todos</button>
-            <button className="filtro-btn">Perros</button>
-            <button className="filtro-btn">Gatos</button>
-            <button className="filtro-btn">Otros</button>
+          <div className="animales-adopcion-filtros-section">
+            <button className="animales-adopcion-filtro-btn active">Todos</button>
+            <button className="animales-adopcion-filtro-btn">Perros</button>
+            <button className="animales-adopcion-filtro-btn">Gatos</button>
+            <button className="animales-adopcion-filtro-btn">Otros</button>
           </div>
         </div>
         
         
-        <div className="mascotas-grid">
+        <div className="animales-adopcion-mascotas-grid">
           {mascotas.map(mascota => (
             <CardMascota key={mascota.id} mascota={mascota} />
           ))}
