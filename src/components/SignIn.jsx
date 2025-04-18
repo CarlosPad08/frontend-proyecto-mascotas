@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "../styles/signin.css";
 
 function SignIn() {
@@ -7,6 +8,8 @@ function SignIn() {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate(); // Hook para redirección
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,7 +22,11 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Datos de inicio de sesión:', formData);
-    // Aquí iría la lógica para autenticar al usuario
+
+    // Lógica de autenticación real aquí
+
+    // Simular autenticación exitosa y redireccionar
+    navigate("/profile");
   };
 
   const toggleShowPassword = () => {
@@ -72,7 +79,6 @@ function SignIn() {
         </div>
         
         <div className="signin-options">
-
           <div className="signin-signup-link">
             ¿No tienes una cuenta? <span onClick={() => window.location.href = '/signup'}>Regístrate</span>
           </div>
