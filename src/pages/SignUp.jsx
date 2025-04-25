@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
+import axiosInstance from '../api/axios';
 import '../styles/signup.css';
 
 function SignUp() {
   // Estados para los valores de los inputs
   const [formData, setFormData] = useState({
-    firstname: "",
-    lastname: "",
+    usuario_id: "",
+    rol_id: "1",
+    nombre: "",
+    apellido: "",
     email: "",
-    password: "",
+    contrasena: "",
+    telefono: "",
+    direccion: "",
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
   
     // Validaciones básicas
-    if (!formData.firstname.trim()) {
+    if (!formData.nombre.trim()) {
       alert("Por favor, ingresa tu nombre.");
       return;
     }
-    if (!formData.lastname.trim()) {
+    if (!formData.apellido.trim()) {
       alert("Por favor, ingresa tu apellido.");
       return;
     }
@@ -32,19 +37,30 @@ function SignUp() {
       alert("Por favor, ingresa un correo válido.");
       return;
     }
-    if (!formData.password.trim()) {
+    if (!formData.contrasena.trim()) {
       alert("Por favor, ingresa una contraseña.");
       return;
     }
-    if (formData.password.length < 6) {
+    if (formData.contrasena.length < 6) {
       alert("La contraseña debe tener al menos 6 caracteres.");
       return;
     }
   
     // Si pasa todas las validaciones
     console.log("Datos de registro:", formData);
-    alert("Registro exitoso");
-    // Aquí podrías enviar los datos al backend
+    
+    // Envío de datos al backend con Axios
+    axiosInstance.post('/api/usuarios/registrar', formData)
+      .then((response) => {
+        console.log('Respuesta del servidor:', response.data);
+        alert('Registro exitoso');
+        // Redirigir al usuario a otra página si es necesario
+        window.location.href = '/signin';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Hubo un problema con el registro. Inténtalo de nuevo.');
+      });
   };
   
   // Estado para mostrar/ocultar la contraseña
@@ -83,27 +99,27 @@ function SignUp() {
                 <div className="signup-input-group">
                   <input
                     type="text"
-                    name="firstname"
-                    id="firstname"
-                    value={formData.firstname}
+                    name="nombre"
+                    id="nombre"
+                    value={formData.nombre}
                     onChange={handleChange}
                     placeholder=" "
                     required
                   />
-                  <label htmlFor="firstname">Nombre</label>
+                  <label htmlFor="nombre">Nombre</label>
                 </div>
 
                 <div className="signup-input-group">
                   <input
                     type="text"
-                    name="lastname"
-                    id="lastname"
-                    value={formData.lastname}
+                    name="apellido"
+                    id="apellido"
+                    value={formData.apellido}
                     onChange={handleChange}
                     placeholder=" "
                     required
                   />
-                  <label htmlFor='lastname'>Apellido</label>
+                  <label htmlFor='apellido'>Apellido</label>
                 </div>
 
                 <div className="signup-input-group">
@@ -122,14 +138,14 @@ function SignUp() {
                 <div className="signup-input-group">
                   <input
                     type={showPassword ? "text" : "password"}
-                    name="password"
-                    id="password"
-                    value={formData.password}
+                    name="contrasena"
+                    id="contrasena"
+                    value={formData.contrasena}
                     onChange={handleChange}
                     placeholder=" "
                     required
                   />
-                  <label htmlFor='password'>Contraseña</label>
+                  <label htmlFor='contrasena'>Contraseña</label>
                   <span className="signup-show-password" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? "ocultar" : "mostrar"}
                   </span>

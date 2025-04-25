@@ -29,6 +29,10 @@ Variables globales
     height: 15px;
 }
 
+.navbar-transparent {
+    background-color: #C0FFD5;
+}
+
 .navbar-left, .navbar-right {
     flex: 1;
     display: flex;
