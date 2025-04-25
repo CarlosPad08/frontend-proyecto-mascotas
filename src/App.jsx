@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp.jsx'
 import AnimalesAdopcion from './pages/AnimalesAdopcion.jsx'
 import Profile from './pages/Profile.jsx'
 import RegisterPet from './components/RegisterPet.jsx'
+import Inicio from './pages/Inicio.jsx'
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/animales-adopcion" element={<AnimalesAdopcion />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register-pet" element={<RegisterPet />} />
+        <Route path="/inicio" element={<Inicio />} />
       </Routes>
     </Router>
   )

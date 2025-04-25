@@ -1,12 +1,16 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/navbar.css';
 
 const Navbar = () => {
+    const location = useLocation();
+    const isInicio = location.pathname === '/inicio';
+
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isInicio ? 'navbar-transparent' : ''}`}>
             <div className="navbar-left">
                 <ul className="navbar-nav-links">
-                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/inicio">Inicio</a></li>
                     <li><a href="/guarderias">Guarderías</a></li>
                     <li><a href="/veterinarias">Veterinarias</a></li>
                 </ul>

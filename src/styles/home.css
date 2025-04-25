@@ -33,7 +33,10 @@
   .home-container {
     display: flex;
     flex-direction: column;
-    background: var(--color-quinary-light);
+    background: url(../../public/fondo4.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 100vw;
     height: 100vh;
   }
@@ -47,7 +50,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--color-primary);
+    color: var(--color-negro);
   }
   
   .home-navbar-menu {
@@ -99,7 +102,6 @@
   .home-span-about {
     margin-top: 8px;
     margin-left: 1rem;
-    color: var(--color-secondary);
     cursor: pointer;
     font-weight: 500;
     transition: all 0.3s ease;

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axiosInstance from '../api/axios.js';
 import "../styles/signin.css";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    contrasena: ''
   });
 
-  const navigate = useNavigate(); // Hook para redirección
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,10 +24,20 @@ function SignIn() {
     e.preventDefault();
     console.log('Datos de inicio de sesión:', formData);
 
-    // Lógica de autenticación real aquí
-
-    // Simular autenticación exitosa y redireccionar
-    navigate("/profile");
+    axiosInstance.post('/api/auth/login', formData)
+      .then((response) => {
+        console.log('Datos de inicio de sesión:', formData);
+        console.log('Respuesta del servidor:', response.data);
+        // Guardar el token en el almacenamiento local
+        localStorage.setItem('token', response.data.token);
+        // Redirigir al usuario a la página de perfil
+        alert('Inicio de sesión exitoso');
+        navigate('/inicio');
+      })
+      .catch((error) => {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+      });  
   };
 
   const toggleShowPassword = () => {
@@ -54,14 +65,14 @@ function SignIn() {
           <div className="signin-input-group">
             <input 
               type={showPassword ? "text" : "password"} 
-              id="password" 
-              name="password" 
-              value={formData.password} 
+              id="contrasena" 
+              name="contrasena" 
+              value={formData.contrasena} 
               onChange={handleChange} 
               placeholder=" " 
               required 
             />
-            <label htmlFor="password">Contraseña</label>
+            <label htmlFor="contrasena">Contraseña</label>
             <span className="signin-show-password" onClick={toggleShowPassword}>
               {showPassword ? "Ocultar" : "Mostrar"}
             </span>
