@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/cardMascota.css";
 
-function CardMascota({ mascota = {} }) {
+function CardMascota({ mascota = {}, onVerInfo }) {
 
     const { animal_id, refugio_id, nombre, especie, raza, edad, estado, descripcion, foto } = mascota;
 
@@ -38,7 +38,7 @@ function CardMascota({ mascota = {} }) {
                 
                 <div className="card-mascota-footer">
                     <button className="card-mascota-btn-adoptar">Adoptar</button>
-                    <button className="card-mascota-btn-info">Más info</button>
+                    <button className="card-mascota-btn-info" onClick={onVerInfo}>Más info</button>
                 </div>
             </div>
         </div>
