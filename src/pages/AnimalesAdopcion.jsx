@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../api/axios.js';
 import Navbar from '../components/Navbar';
+import InfoPet from '../components/InfoPet.jsx';
 import CardMascota from '../components/CardMascota';
 import '../styles/animalesAdopcion.css';
 
@@ -91,7 +92,6 @@ function AnimalesAdopcion() {
             <p className="no-resultados">No hay animales disponibles con este filtro.</p>
           )}
         </div>
-
       </div>
     </div>
   );
