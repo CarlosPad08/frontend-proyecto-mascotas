@@ -19,7 +19,7 @@ function Home() {
         <div className="home-navbar">
           <div className="home-navbar-menu">
             <div className="home-navbar-logo">
-              <img src="../public/logo.png" alt="Logo" />
+              <img src="../public/logo.webp" alt="Logo" />
             </div>
             <div className="home-navbar-title">
               <h1>MiMascota</h1>
@@ -55,7 +55,7 @@ function Home() {
               </div>
             </div>
             <div className="home-info-image">
-              <img src="/fondo-aternativo1.png" alt="Placeholder" />
+              <img src="/fondo-aternativo1.webp" alt="Placeholder" />
             </div>
           </div>
         )}

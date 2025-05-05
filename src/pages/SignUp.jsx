@@ -83,7 +83,7 @@ function SignUp() {
           <p>Regístrate para comenzar a usar nuestra aplicación.</p>
         </div>
         <div className="signup-illustration">
-          <img src="../public/ilustracion.png" alt="Illustration" />
+          <img src="../public/ilustracion.webp" alt="Illustration" />
         </div>
       </div>
       <div className="signup-right-section">
