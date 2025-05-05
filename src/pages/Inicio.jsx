@@ -22,7 +22,7 @@ function inicio () {
             </div>
           </div>
           <div className="inicio-hero-illustration">
-            <img src="illustration-green.png" alt="Illustration" />
+            <img src="illustration-green.webp" alt="Illustration" />
           </div>
         </div>
       </section>
