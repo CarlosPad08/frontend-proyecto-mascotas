@@ -159,6 +159,19 @@
     animation-delay: calc(var(--i, 0) * 0.1s);
     opacity: 0;
 }
+.modal-adopcion-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Asegura que esté por encima de todo */
+  }
+  
 
 .animales-adopcion-mascotas-grid .card-mascota:nth-child(1) { --i: 1; }
 .animales-adopcion-mascotas-grid .card-mascota:nth-child(2) { --i: 2; }
