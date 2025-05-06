@@ -2,24 +2,44 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axiosInstance from '../api/axios.js';
 import Navbar from '../components/Navbar';
+import InfoPet from '../components/InfoPet.jsx';
 import CardMascota from '../components/CardMascota';
 import '../styles/animalesAdopcion.css';
 
 function AnimalesAdopcion() {
-
   const [animales, setAnimales] = useState([]);
+  const [todosAnimales, setTodosAnimales] = useState([]);
+  const [filtroActivo, setFiltroActivo] = useState('Todos');
 
   useEffect(() => {
     axiosInstance.get('/api/animal-adopcion/')
       .then(response => {
         setAnimales(response.data);
-        console.log(response.data);
-        console.log('Animales:', animales);
+        setTodosAnimales(response.data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
   }, []);
+
+  // Función para filtrar animales por especie
+  const filtrarPorEspecie = (especie) => {
+    setFiltroActivo(especie);
+    
+    if (especie === 'Todos') {
+      setAnimales(todosAnimales);
+    } else if (especie === 'Perro' || especie === 'Gato') {
+      const animalesFiltrados = todosAnimales.filter(
+        animal => animal.especie.toLowerCase() === especie.toLowerCase()
+      );
+      setAnimales(animalesFiltrados);
+    } else {
+      const animalesFiltrados = todosAnimales.filter(
+        animal => animal.especie.toLowerCase() !== 'perro' && animal.especie.toLowerCase() !== 'gato'
+      );
+      setAnimales(animalesFiltrados);
+    }
+  };
   
   return (
     <div className="animales-adopcion-page">
@@ -36,20 +56,42 @@ function AnimalesAdopcion() {
           </div>
 
           <div className="animales-adopcion-filtros-section">
-            <button className="animales-adopcion-filtro-btn active">Todos</button>
-            <button className="animales-adopcion-filtro-btn">Perros</button>
-            <button className="animales-adopcion-filtro-btn">Gatos</button>
-            <button className="animales-adopcion-filtro-btn">Otros</button>
+            <button 
+              className={`animales-adopcion-filtro-btn ${filtroActivo === 'Todos' ? 'active' : ''}`} 
+              onClick={() => filtrarPorEspecie('Todos')}
+            >
+              Todos
+            </button>
+            <button 
+              className={`animales-adopcion-filtro-btn ${filtroActivo === 'Perro' ? 'active' : ''}`} 
+              onClick={() => filtrarPorEspecie('Perro')}
+            >
+              Perros
+            </button>
+            <button 
+              className={`animales-adopcion-filtro-btn ${filtroActivo === 'Gato' ? 'active' : ''}`} 
+              onClick={() => filtrarPorEspecie('Gato')}
+            >
+              Gatos
+            </button>
+            <button 
+              className={`animales-adopcion-filtro-btn ${filtroActivo === 'Otro' ? 'active' : ''}`} 
+              onClick={() => filtrarPorEspecie('Otro')}
+            >
+              Otros
+            </button>
           </div>
         </div>
         
-        
         <div className="animales-adopcion-mascotas-grid">
-          {animales.map(animales => (
-            <CardMascota key={animales.id} mascota={animales} />
-          ))}
+          {animales.length > 0 ? (
+            animales.map(animal => (
+              <CardMascota key={animal.id} mascota={animal} />
+            ))
+          ) : (
+            <p className="no-resultados">No hay animales disponibles con este filtro.</p>
+          )}
         </div>
-
       </div>
     </div>
   );
