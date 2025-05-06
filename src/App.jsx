@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import InfoPet from './components/InfoPet.jsx'
 import Home from './pages/Home.jsx'
 import SignUp from './pages/SignUp.jsx'
 import AnimalesAdopcion from './pages/AnimalesAdopcion.jsx'
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/info-pet" element={<InfoPet />} />
         <Route path="/signin" element={<Home />} />
         <Route path="/animales-adopcion" element={<AnimalesAdopcion />} />
         <Route path="/profile" element={<Profile />} />
