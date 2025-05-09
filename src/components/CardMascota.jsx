@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import "../styles/cardMascota.css";
 import ModalAdopcion from "./ModalAdopcion";
 import axiosInstance from "../api/axios";
+import "../styles/cardMascota.css";
 
 function CardMascota({ mascota = {} }) {
   const [mostrarModal, setMostrarModal] = useState(false);
 
   const { animal_id, nombre, especie, raza, edad, descripcion, foto } = mascota;
+
+  const mascota_id = animal_id;
 
   const manejarEdad = (edad) => {
     if (edad > 1) return `${edad} años`;
@@ -16,9 +18,19 @@ function CardMascota({ mascota = {} }) {
 
   const edadMascota = manejarEdad(edad);
 
-  const handleAdoptar = () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
+  const verificarAutenticacion = async () => {
+    try {
+      await axiosInstance.get('/api/auth/verify');
+      return true;
+    } catch (error) {
+      console.error("Error de verificación:", error);
+      return false;
+    }
+  };
+
+  const handleAdoptar = async () => {
+    const estaAutenticado = await verificarAutenticacion();
+    if (!estaAutenticado) {
       alert("Debes iniciar sesión para adoptar.");
       return;
     }
@@ -27,19 +39,29 @@ function CardMascota({ mascota = {} }) {
 
   const enviarSolicitud = async (nota) => {
     try {
-      const token = localStorage.getItem("token");
-      const headers = {
-        Authorization: `Bearer ${token}`,
-      };
       const payload = {
-        animal_id,
-        nota_adicional: nota,
+        mascota_id,
+        mensaje: nota,
+        estado: "pendiente"
       };
-      await axiosInstance.post("/api/solicitudes", payload, { headers });
+
+      console.log("Enviando solicitud con payload:", payload);
+      
+      // withCredentials: true ya está configurado en axiosInstance
+      const response = await axiosInstance.post("/api/solicitudes-adopcion/", payload);
+      
+      console.log("Respuesta del servidor:", response.data);
       alert("✅ Solicitud enviada con éxito.");
     } catch (err) {
-      console.error("Error al enviar solicitud", err);
-      alert("❌ Hubo un error al enviar la solicitud.");
+      console.error("Error al enviar solicitud:", err);
+      console.error("Detalles:", err.response?.data);
+      
+      // Mejor mensaje de error para el usuario
+      if (err.response?.status === 401) {
+        alert("❌ Tu sesión ha expirado. Por favor, inicia sesión nuevamente.");
+      } else {
+        alert(`❌ Error: ${err.response?.data?.mensaje || err.message}`);
+      }
     } finally {
       setMostrarModal(false);
     }
