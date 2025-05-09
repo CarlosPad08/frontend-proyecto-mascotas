@@ -24,12 +24,13 @@ function SignIn() {
     e.preventDefault();
     console.log('Datos de inicio de sesión:', formData);
 
-    axiosInstance.post('/api/auth/login', formData)
+    axiosInstance.post('/api/auth/login',
+      formData,
+      { withCredentials: true }
+      )
       .then((response) => {
         console.log('Datos de inicio de sesión:', formData);
         console.log('Respuesta del servidor:', response.data);
-        // Guardar el token en el almacenamiento local
-        localStorage.setItem('token', response.data.token);
         // Redirigir al usuario a la página de perfil
         alert('Inicio de sesión exitoso');
         navigate('/inicio');
