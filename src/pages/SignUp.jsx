@@ -159,7 +159,7 @@ function SignUp() {
         </div>
         <div className="signup-others">
           <p>¿Eres un refugio, centro veterinario o guarderia?</p>
-          <button>Registrate por acá</button>
+          <button onClick={() => window.location.href = '/signup-refugio'}>Registrate por acá</button>
         </div>
       </div>
     </div>

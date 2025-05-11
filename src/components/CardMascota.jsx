@@ -18,22 +18,7 @@ function CardMascota({ mascota = {} }) {
 
   const edadMascota = manejarEdad(edad);
 
-  const verificarAutenticacion = async () => {
-    try {
-      await axiosInstance.get('/api/auth/verify');
-      return true;
-    } catch (error) {
-      console.error("Error de verificación:", error);
-      return false;
-    }
-  };
-
   const handleAdoptar = async () => {
-    const estaAutenticado = await verificarAutenticacion();
-    if (!estaAutenticado) {
-      alert("Debes iniciar sesión para adoptar.");
-      return;
-    }
     setMostrarModal(true);
   };
 
@@ -47,7 +32,6 @@ function CardMascota({ mascota = {} }) {
 
       console.log("Enviando solicitud con payload:", payload);
       
-      // withCredentials: true ya está configurado en axiosInstance
       const response = await axiosInstance.post("/api/solicitudes-adopcion/", payload);
       
       console.log("Respuesta del servidor:", response.data);
