@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import "../styles/home.css";
 import SignIn from "../components/SignIn";
+import axiosInstance from "../api/axios";
+import "../styles/home.css";
 
 function Home() {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -12,6 +13,8 @@ function Home() {
       setShowSignIn(true);
     }
   }, []);
+
+  axiosInstance.get("/api/");
 
   return (
     <div>
