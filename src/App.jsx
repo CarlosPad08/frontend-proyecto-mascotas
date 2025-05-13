@@ -4,6 +4,7 @@ import SignUp from './pages/SignUp.jsx';
 import AnimalesAdopcion from './pages/AnimalesAdopcion.jsx';
 import Inicio from './pages/Inicio.jsx';
 import SignUpRefugio from './pages/SignUpRefugio.jsx';
+import DashboardRefugio from './pages/DashboardRefugio.jsx';
 import './App.css';
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/signin" element={<Home />} />
         <Route path="/animales-adopcion" element={<AnimalesAdopcion />} />
         <Route path="/signup-refugio" element={<SignUpRefugio />} />
+        <Route path="/dashboard-refugio" element={<DashboardRefugio />} />
       </Routes>
     </Router>
   );

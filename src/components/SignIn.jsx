@@ -22,7 +22,6 @@ function SignIn() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos de inicio de sesión:', formData);
 
     // Verificar si es un usario, refugio, veterinaria o guardería
     const emailDiferenciador = formData.email.split('@')[1]?.split('.')[0];
@@ -33,7 +32,7 @@ function SignIn() {
     if (emailDiferenciador.includes('refugio')) {
       // Redirigir a refugio
       path = '/api/refugios/login-refugio';
-      redirectPath = '/refugio/dashboard';
+      redirectPath = '/dashboard-refugio';
     } else if (emailDiferenciador.includes('veterinaria')) {
       // Redirigir a veterinaria
       path = '/api/veterinarias/login-veterinaria';
@@ -42,8 +41,6 @@ function SignIn() {
       path = '/api/guarderias/login-guarderia';
     }
 
-    console.log('Ruta de inicio de sesión:', path);
-
     // Envío de datos al backend con Axios
 
     axiosInstance.post(path,
@@ -51,6 +48,10 @@ function SignIn() {
       { withCredentials: true }
       )
       .then((response) => {
+        // Guardar la respuesta en el localStorage
+        const userData = response.data;
+        localStorage.setItem('userData', JSON.stringify(userData));
+        console.log('Datos del usuario:', userData);
         // Redirigir al usuario a la página de perfil
         alert('Inicio de sesión exitoso');
         navigate(redirectPath);
