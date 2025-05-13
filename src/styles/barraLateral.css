@@ -1,0 +1,232 @@
+/* =====================
+   Variables globales
+   ===================== */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --color-gris-claro: #eaeaea;
+    --color-gris-medio: #c8c8c8;
+    --color-gris-oscuro: #414141;
+    --color-sombra: rgba(0, 0, 0, 0.1);
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --border-radius: 8px;
+    --transition-normal: all 0.3s ease;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-body);
+}
+
+/* =====================
+   Estilos Barra Lateral
+   ===================== */
+
+.barra-lateral {
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    background-color: var(--color-quinary-light);
+    box-shadow: 2px 0 10px var(--color-sombra);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: var(--transition-normal);
+    border-right: 1px solid var(--color-quaternary);
+}
+
+/* Header de la barra lateral */
+.barra-lateral-header {
+    padding: 20px 15px;
+    border-bottom: 1px solid var(--color-quaternary);
+    background-color: var(--color-quinary);
+}
+
+.barra-lateral-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.barra-lateral-logo-icon {
+    font-size: 28px;
+    color: var(--color-primary);
+    margin-right: 10px;
+}
+
+.barra-lateral-logo h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.barra-lateral-refugio h3 {
+    font-family: var(--font-heading);
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+    color: var(--color-gris-oscuro);
+    text-shadow: 0 1px 0 var(--color-blanco);
+}
+
+.barra-lateral-subtitulo {
+    font-size: 0.85rem;
+    color: var(--color-gris);
+    margin: 0;
+}
+
+/* Navegación */
+.barra-lateral-nav {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.barra-lateral-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.barra-lateral-item {
+    position: relative;
+    transition: var(--transition-normal);
+}
+
+.barra-lateral-item a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--color-gris-oscuro);
+    font-weight: 500;
+    transition: var(--transition-normal);
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
+.barra-lateral-item:hover a {
+    background-color: var(--color-quaternary);
+    color: var(--color-primary);
+}
+
+.barra-lateral-item.active a {
+    background-color: var(--color-tertiary);
+    color: var(--color-blanco);
+    font-weight: 600;
+}
+
+.barra-lateral-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--color-primary);
+}
+
+.barra-lateral-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    min-width: 22px;
+}
+
+/* Footer de la barra lateral */
+.barra-lateral-footer {
+    border-top: 1px solid var(--color-quaternary);
+    padding-top: 15px;
+    margin-top: auto;
+    padding-bottom: 20px;
+    background-color: var(--color-quinary);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .barra-lateral {
+        width: 70px;
+        overflow: visible;
+    }
+    
+    .barra-lateral:hover {
+        width: 250px;
+    }
+    
+    .barra-lateral-header {
+        padding: 15px 10px;
+    }
+    
+    .barra-lateral-logo h2,
+    .barra-lateral-refugio,
+    .barra-lateral-item span {
+        display: none;
+    }
+    
+    .barra-lateral:hover .barra-lateral-logo h2,
+    .barra-lateral:hover .barra-lateral-refugio,
+    .barra-lateral:hover .barra-lateral-item span {
+        display: block;
+    }
+    
+    .barra-lateral-icon {
+        margin-right: 0;
+        font-size: 1.4rem;
+    }
+    
+    .barra-lateral:hover .barra-lateral-icon {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+}
+
+/* Soporte para tema oscuro */
+@media (prefers-color-scheme: dark) {
+    .barra-lateral {
+        background-color: #10302a;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        border-right: 1px solid var(--color-primary);
+    }
+
+    .barra-lateral-header,
+    .barra-lateral-footer {
+        background-color: #0a231e;
+        border-color: var(--color-primary);
+    }
+
+    .barra-lateral-logo h2 {
+        color: var(--color-primary);
+    }
+
+    .barra-lateral-refugio h3 {
+        color: var(--color-secondary);
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .barra-lateral-subtitulo {
+        color: var(--color-quaternary);
+    }
+
+    .barra-lateral-item a {
+        color: var(--color-quinary);
+    }
+
+    .barra-lateral-item:hover a {
+        background-color: rgba(26, 214, 89, 0.2);
+        color: var(--color-quaternary);
+    }
+
+    .barra-lateral-item.active a {
+        background-color: var(--color-primary);
+        color: #0a231e;
+    }
+}
+
