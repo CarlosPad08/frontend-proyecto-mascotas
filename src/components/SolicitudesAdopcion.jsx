@@ -19,21 +19,33 @@ const SolicitudesAdopcion = () => {
             // Llamado al backend
             axiosInstance.get(`/api/solicitudes-adopcion/refugio/${refugio_id}`)
                 .then(response => {
-                    console.log('Datos de solicitudes de adopción:', response.data);
+                    console.log('Datos recibidos satisfactoriamente:');
                     // Obtener solo los datos necesarios
                     const solicitudesData = response.data.map(solicitud => ({
                         id: solicitud.solicitud_id,
                         mascota: solicitud.nombre_mascota,
-                        raza: '',
+                        raza: solicitud.raza_mascota,
                         solicitante: solicitud.nombre_usuario,
                         contacto: solicitud.email_usuario,
-                        fecha: new Date(solicitud.fecha_solicitud).toLocaleDateString(),
+                        fecha: solicitud.fecha_solicitud,
                         estado: solicitud.estado,
                         mensaje: solicitud.mensaje
                     }));
+
+                    // Parsear la fecha desde el formato aaaammdd a un formato legible
+                    solicitudesData.forEach(solicitud => {
+                        const fechaStr = solicitud.fecha.toString();
+                        const anio = fechaStr.substring(0, 4);
+                        const mes = fechaStr.substring(4, 6);
+                        const dia = fechaStr.substring(6, 8);
+                        solicitud.fecha = `${dia}/${mes}/${anio}`;
+                    });
+
+                    // Ordenar las solicitudes por fecha (fecha más reciente primero)
+                    solicitudesData.sort((a, b) => new Date(a.fecha.split('/').reverse().join('-')) - new Date(b.fecha.split('/').reverse().join('-')));
+
                     // Actualizar el estado con los datos obtenidos
                     setSolicitudes(solicitudesData);
-                    console.log('Solicitudes de adopción:', solicitudesData);
                 })
                 .catch(error => {
                     console.error('Error al obtener las solicitudes de adopción:', error);
