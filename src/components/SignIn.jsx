@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../api/axios.js';
 import "../styles/signin.css";
+import SuccessAlert from './alerts/components/SuccessAlert';
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +10,7 @@ function SignIn() {
     email: '',
     contrasena: ''
   });
+  const [showAlert, setShowAlert] = useState(false); // ✅ Estado para el Toast
 
   const navigate = useNavigate();
 
@@ -23,26 +25,22 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verificar si es un usario, refugio, veterinaria o guardería
+    // Verificar si es un usuario, refugio, veterinaria o guardería
     const emailDiferenciador = formData.email.split('@')[1]?.split('.')[0];
 
     let path = '/api/auth/login';
     let redirectPath = '/inicio';
 
     if (emailDiferenciador.includes('refugio')) {
-      // Redirigir a refugio
       path = '/api/refugios/login-refugio';
       redirectPath = '/dashboard-refugio';
     } else if (emailDiferenciador.includes('veterinaria')) {
-      // Redirigir a veterinaria
       path = '/api/veterinarias/login-veterinaria';
     } else if (emailDiferenciador.includes('guarderia')) {
-      // Redirigir a guardería
       path = '/api/guarderias/login-guarderia';
     }
 
     // Envío de datos al backend con Axios
-
     axiosInstance.post(path,
       formData,
       { withCredentials: true }
@@ -52,9 +50,15 @@ function SignIn() {
         const userData = response.data;
         localStorage.setItem('userData', JSON.stringify(userData));
         console.log('Datos del usuario:', userData);
-        // Redirigir al usuario a la página de perfil
-        alert('Inicio de sesión exitoso');
-        navigate(redirectPath);
+
+        // ✅ Mostrar la alerta visual
+        setShowAlert(true);
+
+        // 🔄 Redirigir después de 3 segundos
+        setTimeout(() => {
+          setShowAlert(false);
+          navigate(redirectPath);
+        }, 3000);
       })
       .catch((error) => {
         console.error('Error al iniciar sesión:', error);
@@ -68,6 +72,12 @@ function SignIn() {
 
   return (
     <div className="signin-container">
+      {showAlert && (
+        <SuccessAlert 
+          message="¡Inicio de sesión exitoso!" 
+          onClose={() => setShowAlert(false)} 
+        />
+      )}
       <div className="signin-form-container">
         <h2>Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>
