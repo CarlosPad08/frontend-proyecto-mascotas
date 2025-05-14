@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axiosInstance from '../api/axios.js';
 import "../styles/signin.css";
 import SuccessAlert from './alerts/components/SuccessAlert';
+import ErrorAlert from './alerts/components/ErrorAlert'; // ✅ Importar el ErrorAlert
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,7 +11,8 @@ function SignIn() {
     email: '',
     contrasena: ''
   });
-  const [showAlert, setShowAlert] = useState(false); // ✅ Estado para el Toast
+  const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+  const [showErrorAlert, setShowErrorAlert] = useState(false); // ✅ Estado para el error
 
   const navigate = useNavigate();
 
@@ -25,7 +27,6 @@ function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verificar si es un usuario, refugio, veterinaria o guardería
     const emailDiferenciador = formData.email.split('@')[1]?.split('.')[0];
 
     let path = '/api/auth/login';
@@ -46,23 +47,22 @@ function SignIn() {
       { withCredentials: true }
       )
       .then((response) => {
-        // Guardar la respuesta en el localStorage
         const userData = response.data;
         localStorage.setItem('userData', JSON.stringify(userData));
         console.log('Datos del usuario:', userData);
 
-        // ✅ Mostrar la alerta visual
-        setShowAlert(true);
-
-        // 🔄 Redirigir después de 3 segundos
+        // ✅ Mostramos el alert de éxito
+        setShowSuccessAlert(true);
         setTimeout(() => {
-          setShowAlert(false);
+          setShowSuccessAlert(false);
           navigate(redirectPath);
         }, 3000);
       })
       .catch((error) => {
         console.error('Error al iniciar sesión:', error);
-        alert('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+        // ✅ Mostramos el alert de error
+        setShowErrorAlert(true);
+        setTimeout(() => setShowErrorAlert(false), 3000);
       });  
   };
 
@@ -72,12 +72,20 @@ function SignIn() {
 
   return (
     <div className="signin-container">
-      {showAlert && (
+      {showSuccessAlert && (
         <SuccessAlert 
           message="¡Inicio de sesión exitoso!" 
-          onClose={() => setShowAlert(false)} 
+          onClose={() => setShowSuccessAlert(false)} 
         />
       )}
+
+      {showErrorAlert && (
+        <ErrorAlert 
+          message="Usuario o contraseña incorrectos" 
+          onClose={() => setShowErrorAlert(false)} 
+        />
+      )}
+
       <div className="signin-form-container">
         <h2>Iniciar Sesión</h2>
         <form onSubmit={handleSubmit}>
