@@ -1,0 +1,49 @@
+/* =====================
+   Variables globales
+   ===================== */
+:root {
+  --color-primary: #1AD659;
+  --color-secondary: #3EE074;
+  --color-tertiary: #5FF791;
+  --color-quaternary: #8CFFB3;
+  --color-quinary: #deffe9;
+  --color-quinary-light: #f0fff4;
+  --color-blanco: #FFFFFF;
+  --color-negro: #000000;
+  --color-gris: #5c5c5c;
+  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+}
+
+.notfound-container {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--color-quinary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.notfound-title {
+  font-size: 6rem; /* Reducido para mejorar escalabilidad */
+  color: var(--color-primary);
+  margin: 0;
+  font-family: var(--font-heading);
+  line-height: 1;
+  font-weight: bolder;
+}
+
+.notfound-message,
+.notfound-message-2 {
+  font-size: 1.25rem;
+  color: #4d4d4d;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  max-width: 90%;
+  font-family: var(--font-heading);
+  font-weight: bold;
+}
