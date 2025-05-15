@@ -5,6 +5,7 @@ import AnimalesAdopcion from './pages/AnimalesAdopcion.jsx';
 import Inicio from './pages/Inicio.jsx';
 import SignUpRefugio from './pages/SignUpRefugio.jsx';
 import DashboardRefugio from './pages/DashboardRefugio.jsx';
+import NotFound from './pages/NotFound.jsx';
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/animales-adopcion" element={<AnimalesAdopcion />} />
         <Route path="/signup-refugio" element={<SignUpRefugio />} />
         <Route path="/dashboard-refugio" element={<DashboardRefugio />} />
+        <Route path="/error-404" element={<NotFound/>} />
       </Routes>
     </Router>
   );
