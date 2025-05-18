@@ -20,6 +20,7 @@ function App() {
         <Route path="/signup-refugio" element={<SignUpRefugio />} />
         <Route path="/dashboard-refugio" element={<DashboardRefugio />} />
         <Route path="/error-404" element={<NotFound/>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </Router>
   );
