@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/barraLateral.css';
-
-// Componentes
-import PublicarMascotaAdopcion from './PublicarMascotaAdopcion.jsx';
 
 // Importando íconos
 import { FaHome, FaPaw, FaPlusCircle, FaInbox, FaUser, FaCog, FaSignOutAlt } from 'react-icons/fa';
@@ -70,10 +66,10 @@ const BarraLateral = ({ vistaActiva, setVistaActiva }) => {
             
             <div className="barra-lateral-footer">
                 <ul className="barra-lateral-menu">
-                    <li className="barra-lateral-item">
+                    {/* <li className="barra-lateral-item">
                         <a href="#" onClick={(e) => {
                             e.preventDefault();
-                            // Aquí podrías agregar lógica para manejar la navegación al perfil
+                            // Agregar lógica para manejar la navegación al perfil
                             // Por ahora solo prevenimos el comportamiento por defecto
                         }}>
                             <FaUser className="barra-lateral-icon" />
@@ -88,11 +84,13 @@ const BarraLateral = ({ vistaActiva, setVistaActiva }) => {
                             <FaCog className="barra-lateral-icon" />
                             <span>Configuración</span>
                         </a>
-                    </li>
+                    </li> */}
                     <li className="barra-lateral-item">
                         <a href="#" onClick={(e) => {
                             e.preventDefault();
-                            // Aquí podrías agregar lógica para manejar el cierre de sesión
+                            // Agregar lógica para manejar el cierre de sesión
+                            localStorage.removeItem('userData');
+                            window.location.href = '/';
                         }}>
                             <FaSignOutAlt className="barra-lateral-icon" />
                             <span>Cerrar Sesión</span>
