@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import InfoPet from '../components/InfoPet.jsx';
 import CardMascota from '../components/CardMascota';
 import '../styles/animalesAdopcion.css';
+import CarruselBanner from '../components/CarruselBanner.jsx';
 
 function AnimalesAdopcion() {
   const [animales, setAnimales] = useState([]);
@@ -47,6 +48,7 @@ function AnimalesAdopcion() {
       <div className="animales-adopcion-container_animales_adopcion">
         <div className="animales-adopcion-banner">
           <img src="../public/publicidad.webp" alt="Banner" />
+          <CarruselBanner />
         </div>
 
         <div className="animales-adopcion-header-section">
