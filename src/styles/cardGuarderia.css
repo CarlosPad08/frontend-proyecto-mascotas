@@ -1,0 +1,416 @@
+/* Variables globales */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-border: #E0E0E0;
+    --color-error: #FF5252;
+    --color-success: #4CAF50;
+    --color-warning: #FFC107;
+    --color-info: #2196F3;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(26, 214, 89, 0.15);
+    --transition: all 0.3s ease;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Estilos para las tarjetas de guardería */
+.guarderia-card {
+    background-color: var(--color-blanco);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid transparent;
+}
+
+.guarderia-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    border-radius: calc(var(--border-radius) + 2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.guarderia-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 25px rgba(26, 214, 89, 0.25);
+    border-color: transparent;
+}
+
+.guarderia-card:hover::before {
+    opacity: 1;
+}
+
+.guarderia-card-imagen-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 3px solid var(--color-quinary);
+}
+
+.guarderia-card-imagen-container::after {
+    content: '🐶';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 0.5rem;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0.9;
+    transform: rotate(15deg);
+    transition: var(--transition);
+}
+
+.guarderia-card:hover .guarderia-card-imagen-container::after {
+    transform: rotate(45deg);
+}
+
+.guarderia-card-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.guarderia-card:hover .guarderia-card-imagen {
+    transform: scale(1.1);
+}
+
+.guarderia-card-contenido {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    z-index: 1;
+}
+
+.guarderia-card-contenido::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../public/paw-pattern-light.svg');
+    background-size: 100px;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.guarderia-card-nombre {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin: 0;
+    color: var(--color-primary);
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.guarderia-card-nombre::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-quaternary);
+    border-radius: 3px;
+}
+
+.guarderia-card-calificacion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--color-quinary-light);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--border-radius);
+    width: fit-content;
+}
+
+.guarderia-estrellas {
+    display: flex;
+    gap: 0.2rem;
+}
+
+.estrella-llena, .estrella-media {
+    color: var(--color-warning);
+    filter: drop-shadow(0 1px 2px rgba(255, 193, 7, 0.3));
+}
+
+.estrella-vacia {
+    color: var(--color-border);
+}
+
+.guarderia-calificacion-valor {
+    font-weight: 700;
+    color: var(--color-text);
+    background-color: var(--color-warning);
+    color: white;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.guarderia-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    background-color: var(--color-quinary-light);
+    border-radius: var(--border-radius);
+    border-left: 3px solid var(--color-quaternary);
+}
+
+.guarderia-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    transition: var(--transition);
+    padding: 0.25rem 0;
+}
+
+.guarderia-info-item:hover {
+    transform: translateX(5px);
+}
+
+.guarderia-info-icon {
+    color: var(--color-primary);
+    margin-top: 3px;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+}
+
+/* Estilos para los tipos de mascota */
+.guarderia-card-tipos-mascota {
+    margin-top: 1rem;
+}
+
+.guarderia-card-tipos-mascota h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.guarderia-card-tipos-mascota h4::before {
+    content: '🐾';
+    font-size: 1rem;
+}
+
+.guarderia-tipos-mascota-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tipo-mascota-tag {
+    background: linear-gradient(135deg, #FFE0B2, #FFCC80);
+    color: #E65100;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(230, 81, 0, 0.1);
+    transition: var(--transition);
+    border: 1px solid #FFB74D;
+}
+
+.tipo-mascota-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(230, 81, 0, 0.2);
+}
+
+.tipo-mascota-icon {
+    font-size: 0.9rem;
+    color: #E65100;
+}
+
+/* Estilos para los servicios */
+.guarderia-card-servicios {
+    margin-top: 1rem;
+}
+
+.guarderia-card-servicios h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin: 0 0 0.75rem 0;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.guarderia-card-servicios h4::before {
+    content: '🐾';
+    font-size: 1rem;
+}
+
+.guarderia-servicios-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.guarderia-servicio-tag {
+    background: linear-gradient(135deg, var(--color-quinary), var(--color-quinary-light));
+    color: var(--color-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    box-shadow: 0 2px 5px rgba(26, 214, 89, 0.1);
+    transition: var(--transition);
+    border: 1px solid var(--color-quaternary);
+}
+
+.guarderia-servicio-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(26, 214, 89, 0.2);
+}
+
+.guarderia-servicio-icon {
+    font-size: 0.8rem;
+    color: var(--color-primary);
+}
+
+/* Estilos para el footer */
+.guarderia-card-footer {
+    padding: 1.5rem;
+    border-top: 2px solid var(--color-quinary);
+    display: flex;
+    gap: 1rem;
+    position: relative;
+    background: linear-gradient(to bottom, var(--color-blanco) 0%, var(--color-quinary-light) 100%);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.guarderia-card-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background-color: var(--color-primary);
+    border-radius: 3px;
+}
+
+.guarderia-btn-contactar {
+    flex: 1;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-blanco);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(26, 214, 89, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.guarderia-btn-contactar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.guarderia-btn-contactar:hover::before {
+    left: 100%;
+}
+
+.guarderia-btn-contactar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(26, 214, 89, 0.3);
+}
+
+.guarderia-btn-ver-mas {
+    flex: 1;
+    background-color: var(--color-blanco);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
+    padding: 0.85rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.guarderia-btn-ver-mas::after {
+    content: '🐶';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 1.5rem;
+    opacity: 0.1;
+    transition: var(--transition);
+}
+
+.guarderia-btn-ver-mas:hover {
+    background-color: var(--color-quinary);
+    transform: translateY(-3px);
+}
+
+.guarderia-btn-ver-mas:hover::after {
+    transform: rotate(45deg);
+    top: -15px;
+    right: -15px;
+    opacity: 0.2;
+}
+
+/* Estilos responsivos para la tarjeta */
+@media (max-width: 480px) {
+    .guarderia-card-footer {
+        flex-direction: column;
+    }
+}
