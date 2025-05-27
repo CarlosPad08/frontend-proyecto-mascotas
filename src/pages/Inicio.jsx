@@ -34,12 +34,12 @@ function inicio () {
             <h3>Animalitos en adopcion</h3>
             <p>Encuentra a tu nuevo mejor amigo entre los animalitos que buscan un hogar.</p>
           </div>
-          <div className="inicio-feature" onClick={() => alert('¡Pronto disponible!')}>
+          <div className="inicio-feature" onClick={() => navigate('/veterinarias')}>
             <div className="inicio-icon">🏥</div>
             <h3>Centros veterinarios</h3>
             <p>Descubre los mejores centros veterinarios para el cuidado de tus mascotas.</p>
           </div>
-          <div className="inicio-feature" onClick={() => alert('¡Pronto disponible!')}>
+          <div className="inicio-feature" onClick={() => navigate('/guarderias')}>
             <div className="inicio-icon">🏫</div>
             <h3>Guarderias para mascotas</h3>
             <p>Encuentra opciones seguras y confiables para el cuidado de tus mascotas.</p>
