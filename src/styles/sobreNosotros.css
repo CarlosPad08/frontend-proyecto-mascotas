@@ -1,0 +1,115 @@
+/* =====================
+   Variables globales
+   ===================== */
+:root {
+  --color-primary: #1AD659;
+  --color-secondary: #3EE074;
+  --color-tertiary: #5FF791;
+  --color-quaternary: #8CFFB3;
+  --color-quinary: #deffe9;
+  --color-quinary-light: #f0fff4;
+  --color-blanco: #FFFFFF;
+  --color-negro: #000000;
+  --color-gris: #5c5c5c;
+  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+}
+
+/* =====================
+   Estilos base
+   ===================== */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-quinary-light);
+  margin: 0;
+  padding: 0;
+}
+
+.sb-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: url('../../public/fondo-sb.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+}
+
+.sb-info-container {
+  background-color: transparent;
+  padding: 40px;
+  max-width: 900px;
+  width: 50%;
+  font-family: var(--font-heading);
+  color: var(--color-gris-oscuro);
+  font-weight: bold;
+  text-align: justify;
+}
+
+/* Encabezados */
+.sb-info-container h1,
+.sb-info-container h2 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  margin-bottom: 16px;
+}
+
+.sb-info-container h1 {
+  font-size: 4.5rem;
+  text-align: center;
+}
+
+.sb-info-container h2 {
+  font-size: 4.5rem;
+  margin-top: 30px;
+}
+
+/* Párrafos y listas */
+.sb-info-container p {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.sb-info-container ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sb-info-container ul li {
+  margin-bottom: 10px;
+  padding-left: 20px;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.sb-info-container ul li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-secondary);
+  font-size: 1.5rem;
+  top: -2px;
+}
+
+.sb-back-button {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--color-quinary);
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.sb-back-button:hover {
+  background-color: #006624;
+  color: white;
+}
