@@ -1,0 +1,372 @@
+/* =====================
+   Variables globales (importadas de barraLateral.css)
+   ===================== */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-negro: #000000;
+    --color-gris: #5c5c5c;
+    --color-gris-claro: #eaeaea;
+    --color-gris-medio: #c8c8c8;
+    --color-gris-oscuro: #414141;
+    --color-sombra: rgba(0, 0, 0, 0.1);
+    --color-disponible: #1AD659;
+    --color-proceso: #f7c955;
+    --color-adoptado: #8e8e8e;
+    --font-body: 'Open Sans', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --border-radius: 8px;
+    --transition-normal: all 0.3s ease;
+}
+
+/* =====================
+   Listado de Mascotas Estilos
+   ===================== */
+
+.listado-mascotas {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header y título */
+.listado-mascotas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.listado-mascotas-titulo {
+    font-family: var(--font-heading);
+    color: var(--color-gris-oscuro);
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.listado-mascotas-titulo-icon {
+    margin-right: 10px;
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.listado-mascotas-agregar-btn {
+    background-color: var(--color-primary);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 10px 20px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.listado-mascotas-agregar-btn:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--color-sombra);
+}
+
+/* Filtros y búsqueda */
+.listado-mascotas-filtros {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    background-color: var(--color-quinary-light);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px var(--color-sombra);
+}
+
+.listado-mascotas-filtro-grupo,
+.listado-mascotas-busqueda-grupo {
+    display: flex;
+    align-items: center;
+}
+
+.listado-mascotas-filtro-icon,
+.listado-mascotas-busqueda-icon {
+    color: var(--color-primary);
+    margin-right: 10px;
+}
+
+.listado-mascotas-select,
+.listado-mascotas-input {
+    border: 1px solid var(--color-gris-claro);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    background-color: var(--color-blanco);
+    font-family: var(--font-body);
+    color: var(--color-gris-oscuro);
+    min-width: 200px;
+}
+
+.listado-mascotas-select:focus,
+.listado-mascotas-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(26, 214, 89, 0.2);
+}
+
+.listado-mascotas-busqueda {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.listado-mascotas-busqueda-grupo {
+    width: 100%;
+}
+
+.listado-mascotas-input {
+    width: 100%;
+}
+
+/* Grid de mascotas */
+.listado-mascotas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+/* Tarjeta de mascota */
+.mascota-card {
+    background-color: var(--color-blanco);
+    border-radius: var(--border-radius);
+    box-shadow: 0 3px 10px var(--color-sombra);
+    overflow: hidden;
+    transition: var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.mascota-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--color-sombra);
+}
+
+/* Sección de imagen */
+.mascota-card-imagen-container {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.mascota-card-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-normal);
+}
+
+.mascota-card:hover .mascota-card-imagen {
+    transform: scale(1.05);
+}
+
+.mascota-estado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.mascota-estado.disponible {
+    background-color: var(--color-disponible);
+}
+
+.mascota-estado.en-proceso {
+    background-color: var(--color-proceso);
+}
+
+.mascota-estado.adoptado {
+    background-color: var(--color-adoptado);
+}
+
+/* Contenido de la tarjeta */
+.mascota-card-contenido {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mascota-card-nombre {
+    font-family: var(--font-heading);
+    color: var(--color-gris-oscuro);
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.mascota-card-tipo {
+    display: flex;
+    align-items: center;
+    color: var(--color-gris);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.mascota-tipo-icon {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+
+.mascota-tipo-icon.perro {
+    color: #8c6d3f;
+}
+
+.mascota-tipo-icon.gato {
+    color: #7a7574;
+}
+
+/* Detalles de la mascota */
+.mascota-card-detalles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    border-top: 1px solid var(--color-gris-claro);
+    border-bottom: 1px solid var(--color-gris-claro);
+    padding: 10px 0;
+}
+
+.mascota-detalle {
+    flex: 1;
+    min-width: calc(33% - 10px);
+}
+
+.mascota-detalle-label {
+    font-size: 0.8rem;
+    color: var(--color-gris);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.mascota-detalle-valor {
+    font-weight: 600;
+    color: var(--color-gris-oscuro);
+    font-size: 0.9rem;
+}
+
+.mascota-card-descripcion {
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: var(--color-gris);
+    line-height: 1.5;
+}
+
+.mascota-card-descripcion p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Acciones */
+.mascota-card-acciones {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 15px;
+    background-color: var(--color-quinary-light);
+    gap: 10px;
+}
+
+.btn-accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition-normal);
+}
+
+.btn-accion:hover {
+    transform: translateY(-2px);
+}
+
+.btn-editar {
+    background-color: var(--color-quaternary);
+    color: var(--color-primary);
+}
+
+.btn-editar:hover {
+    background-color: var(--color-tertiary);
+}
+
+.btn-eliminar {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: #e64747;
+}
+
+.btn-eliminar:hover {
+    background-color: #e64747;
+    color: var(--color-blanco);
+}
+
+.listado-mascotas-no-resultados {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: var(--color-quinary-light);
+    border-radius: var(--border-radius);
+    color: var(--color-gris);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .listado-mascotas-filtros {
+        flex-direction: column;
+    }
+    
+    .listado-mascotas-busqueda {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .listado-mascotas-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .listado-mascotas-titulo {
+        margin-bottom: 10px;
+    }
+    
+    .listado-mascotas-agregar-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .listado-mascotas-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}

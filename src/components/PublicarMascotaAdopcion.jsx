@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axiosInstance from '../api/axios.js'
+import { uploadImageToCloudinary } from '../utils/uploadImage.js';
 import '../styles/publicarMascotaAdopcion.css';
-import { FaPaw, FaImage, FaUpload } from 'react-icons/fa';
+import { FaPaw, FaImage, FaUpload, FaSpinner } from 'react-icons/fa';
 
 const PublicarMascotaAdopcion = () => {
     // Tomar datos del refugio desde el localStorage
@@ -16,10 +17,15 @@ const PublicarMascotaAdopcion = () => {
         edad: '',
         estado: 'disponible',
         descripcion: '',
+        foto: '',
     });
     
     // Para manejar las imágenes
     const [imagenPreview, setImagenPreview] = useState(null);
+    // Nuevos estados para controlar la carga y el botón
+    const [cargandoImagen, setCargandoImagen] = useState(false);
+    const [botonHabilitado, setBotonHabilitado] = useState(false);
+    const [progresoSubida, setProgresoSubida] = useState(0);
     
     // Maneja los cambios en los inputs del formulario
     const handleInputChange = (e) => {
@@ -31,19 +37,61 @@ const PublicarMascotaAdopcion = () => {
     };
     
     // Maneja la subida de imágenes
-    const handleImageUpload = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            // Crear una URL para previsualizar la imagen
-            const imageUrl = URL.createObjectURL(file);
-            setImagenPreview(imageUrl);
-            
-            // En una aplicación real, aquí se subiria la imagen a un servidor
-            // y se guardaría la URL en el estado
-            setMascotaData({
-                ...mascotaData,
-                imagenes: [...mascotaData.imagenes, file]
-            });
+    const handleImageUpload = async (e) => {
+        try {
+            const file = e.target.files[0];
+
+            if (file) {
+                // Iniciar proceso de carga
+                setCargandoImagen(true);
+                setBotonHabilitado(false);
+                setProgresoSubida(0);
+                
+                // Simular progreso de carga
+                const intervalo = setInterval(() => {
+                    setProgresoSubida(prev => {
+                        const nuevoProgreso = prev + 10;
+                        return nuevoProgreso > 90 ? 90 : nuevoProgreso;
+                    });
+                }, 200);
+                
+                const imageUrl = URL.createObjectURL(file);
+                setImagenPreview(imageUrl);
+
+                const uploadedUrl = await uploadImageToCloudinary(file);
+
+                if (uploadedUrl) {
+                    setMascotaData((prevData) => {
+                        const updatedData = {
+                            ...prevData,
+                            foto: uploadedUrl,
+                        };
+                        return updatedData;
+                    });
+                    
+                    // Completar la barra de progreso
+                    setProgresoSubida(100);
+                    // Limpiar intervalo
+                    clearInterval(intervalo);
+                    // Indicar que la carga ha terminado
+                    setCargandoImagen(false);
+                    
+                    // Habilitar el botón después de 3 segundos
+                    setTimeout(() => {
+                        setBotonHabilitado(true);
+                    }, 3500);
+                } else {
+                    console.error("Error: La URL subida es inválida o no se generó correctamente.");
+                    setCargandoImagen(false);
+                    clearInterval(intervalo);
+                }
+            } else {
+                console.warn("Advertencia: No se seleccionó ningún archivo.");
+            }
+        } catch (error) {
+            console.error("Error durante la carga de la imagen:", error);
+            setCargandoImagen(false);
+            setProgresoSubida(0);
         }
     };
     
@@ -53,7 +101,6 @@ const PublicarMascotaAdopcion = () => {
         console.log('Datos de la mascota a publicar:', mascotaData);
 
         // Mandar datos al backend
-
         axiosInstance.post('/api/animal-adopcion/',
             mascotaData,
             { withCredentials: true })
@@ -77,6 +124,7 @@ const PublicarMascotaAdopcion = () => {
             descripcion: '',
         });
         setImagenPreview(null);
+        setBotonHabilitado(false);
     };
     
     return (
@@ -231,13 +279,33 @@ const PublicarMascotaAdopcion = () => {
                                     className="hidden-upload-input"
                                 />
                                 <p className="upload-help-text">Se recomienda subir imágenes claras de la mascota</p>
+                                
+                                {/* Indicador de progreso */}
+                                {cargandoImagen && (
+                                    <div className="upload-progress-container">
+                                        <div className="upload-progress-bar" style={{ width: `${progresoSubida}%` }}></div>
+                                        <div className="upload-spinner">
+                                            <FaSpinner className="spin-animation" /> Subiendo imagen...
+                                        </div>
+                                    </div>
+                                )}
+                                
+                                {!cargandoImagen && progresoSubida === 100 && !botonHabilitado && (
+                                    <div className="upload-success">
+                                        <p>Imagen subida correctamente. El botón se habilitará en 3 segundos...</p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
                     
                     <div className="form-actions">
-                        <button type="submit" className="publicar-btn">
-                            Publicar mascota en adopción
+                        <button 
+                            type="submit" 
+                            className={`publicar-btn ${!botonHabilitado && mascotaData.foto ? 'publicar-btn-disabled' : ''}`}
+                            disabled={!botonHabilitado && mascotaData.foto}
+                        >
+                            {!botonHabilitado && mascotaData.foto ? 'Preparando...' : 'Publicar mascota en adopción'}
                         </button>
                     </div>
                 </form>

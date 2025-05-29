@@ -7,6 +7,7 @@ import "../styles/dashboardRefugio.css";
 import BarraLateral from "../components/BarraLateral.jsx";
 import PublicarMascotaAdopcion from "../components/PublicarMascotaAdopcion.jsx";
 import SolicitudesAdopcion from "../components/SolicitudesAdopcion.jsx";
+import ListadoMascotas from "../components/ListadoMascotas.jsx";
 
 // Íconos
 import { FaPaw, FaHome, FaCalendarAlt, FaUsers } from "react-icons/fa";
@@ -33,15 +34,7 @@ function DashboardRefugio() {
             case 'publicar':
                 return <PublicarMascotaAdopcion />;
             case 'mascotas':
-                return (
-                    <div>
-                        <h1 className="dashboard-refugio-titulo">Mascotas en adopción</h1>
-                        <div className="dashboard-refugio-card">
-                            <h3 className="dashboard-refugio-card-titulo">Listado de mascotas</h3>
-                            <p>Aquí se mostrará el listado de mascotas en adopción...</p>
-                        </div>
-                    </div>
-                );
+                return <ListadoMascotas />;
             case 'solicitudes':
                 return <SolicitudesAdopcion />;
             case 'inicio':

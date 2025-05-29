@@ -1,0 +1,356 @@
+/* Variables globales */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-border: #E0E0E0;
+    --color-error: #FF5252;
+    --color-success: #4CAF50;
+    --color-warning: #FFC107;
+    --color-info: #2196F3;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(26, 214, 89, 0.15);
+    --transition: all 0.3s ease;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Estilos para la página de guarderías */
+.guarderias-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: url('../../public/fondo-pets.svg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+.guarderias-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    z-index: -1;
+}
+
+.guarderias-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.guarderias-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-quaternary) 100%);
+    border-radius: 3px;
+}
+
+.guarderias-header h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.guarderias-header h1::before {
+    content: '🐶';
+    position: absolute;
+    top: -15px;
+    left: -30px;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    transform: rotate(-20deg);
+}
+
+.volver-atras-btn {
+    background-color: var(--color-quaternary);
+    color: var(--color-text);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.volver-atras-btn:hover {
+    background-color: var(--color-tertiary);
+    transform: translateY(-2px);
+}
+
+/* Estilos para la búsqueda y filtros */
+.guarderias-busqueda-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.guarderias-busqueda {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-blanco);
+    border: 2px solid var(--color-quaternary);
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.25rem;
+    min-width: 250px;
+    box-shadow: 0 4px 15px rgba(26, 214, 89, 0.1);
+    transition: var(--transition);
+}
+
+.guarderias-busqueda:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 20px rgba(26, 214, 89, 0.2);
+    transform: translateY(-2px);
+}
+
+.busqueda-icon {
+    color: var(--color-primary);
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.busqueda-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: transparent;
+}
+
+.busqueda-input::placeholder {
+    color: var(--color-text-light);
+    opacity: 0.7;
+}
+
+.filtro-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-tertiary);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(26, 214, 89, 0.1);
+}
+
+.filtro-toggle-btn:hover {
+    background-color: var(--color-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(26, 214, 89, 0.2);
+}
+
+.guarderias-filtros {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--color-quinary-light);
+    border: none;
+    border-radius: var(--border-radius);
+    flex-wrap: wrap;
+    box-shadow: 0 4px 15px rgba(26, 214, 89, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.guarderias-filtros::before {
+    content: '🐱';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 2rem;
+    opacity: 0.1;
+    transform: rotate(15deg);
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 200px;
+    position: relative;
+}
+
+.filtro-grupo label {
+    font-weight: 600;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filtro-grupo label::before {
+    content: '🐾';
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.filtro-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-quaternary);
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background-color: var(--color-blanco);
+    outline: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filtro-select:focus, .filtro-select:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.1);
+}
+
+/* Estilos para los resultados */
+.guarderias-resultados {
+    margin-top: 2rem;
+    position: relative;
+}
+
+.resultados-contador {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    background-color: var(--color-quinary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.1);
+}
+
+.resultados-contador::before {
+    content: '🐶';
+    margin-right: 0.75rem;
+    font-size: 1.2rem;
+}
+
+.guarderias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0.5rem;
+}
+
+.guarderias-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../public/paw-pattern.svg');
+    background-size: 200px;
+    opacity: 0.03;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.no-resultados {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: var(--color-quinary-light);
+    border-radius: var(--border-radius);
+    border: 2px dashed var(--color-quaternary);
+    box-shadow: 0 4px 15px rgba(26, 214, 89, 0.05);
+}
+
+.no-resultados::before {
+    content: '🐶';
+    display: block;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.no-resultados p:first-child {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+}
+
+.no-resultados p:last-child {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .guarderias-container {
+        padding: 1.5rem;
+    }
+    
+    .guarderias-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .guarderias-busqueda-container {
+        flex-direction: column;
+    }
+    
+    .guarderias-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .guarderias-container {
+        padding: 1rem;
+    }
+    
+    .guarderias-header h1 {
+        font-size: 1.8rem;
+    }
+}
