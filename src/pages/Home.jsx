@@ -26,8 +26,10 @@ function Home() {
             </div>
             <div className="home-navbar-title">
               <h1>MiMascota</h1>
-              <span className="home-span-about">Sobre nosotros</span>
-            </div>
+              <span className="home-span-about" onClick={() => window.location.href = '/sobre-nosotros'}>
+                Sobre nosotros
+                </span>
+                </div>
           </div>
           <div className="home-navbar-links">
             <span onClick={() => window.location.href = '/signup'}>Registrate</span>
