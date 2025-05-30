@@ -1,0 +1,182 @@
+/* Variables globales */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-quinary-light: #f0fff4;
+    --color-blanco: #FFFFFF;
+    --color-text: #333333;
+    --color-text-light: #666666;
+    --color-border: #E0E0E0;
+    --color-error: #FF5252;
+    --color-success: #4CAF50;
+    --color-warning: #FFC107;
+    --color-info: #2196F3;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(26, 214, 89, 0.15);
+    --transition: all 0.3s ease;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* Estilos para la tarjeta de mis mascotas */
+.card-mis-mascotas {
+    display: flex;
+    background-color: var(--color-blanco);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+    margin-bottom: 1.5rem;
+    height: 140px;
+}
+
+.card-mis-mascotas:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(26, 214, 89, 0.2);
+}
+
+/* Sección de la imagen */
+.card-mis-mascotas-imagen {
+    width: 140px;
+    height: 140px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.card-mis-mascotas-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: var(--transition);
+}
+
+.card-mis-mascotas:hover .card-mis-mascotas-imagen img {
+    transform: scale(1.05);
+}
+
+.card-mis-mascotas-especie {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(26, 214, 89, 0.3);
+}
+
+/* Sección de la información */
+.card-mis-mascotas-info {
+    flex-grow: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-mis-mascotas-nombre {
+    margin: 0 0 10px 0;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+.card-mis-mascotas-detalles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.detalle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.etiqueta {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.valor {
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+/* Sección de acciones */
+.card-mis-mascotas-acciones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+    background-color: var(--color-quinary-light);
+    border-left: 1px solid var(--color-quinary);
+}
+
+.accion-editar,
+.accion-eliminar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.accion-editar {
+    background-color: var(--color-quaternary);
+    color: var(--color-text);
+}
+
+.accion-eliminar {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: var(--color-error);
+}
+
+.accion-editar:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(26, 214, 89, 0.3);
+}
+
+.accion-eliminar:hover {
+    background-color: var(--color-error);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(255, 82, 82, 0.3);
+}
+
+/* Estilos responsivos */
+@media (max-width: 480px) {
+    .card-mis-mascotas {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .card-mis-mascotas-imagen {
+        width: 100%;
+        height: 180px;
+    }
+    
+    .card-mis-mascotas-acciones {
+        flex-direction: row;
+        justify-content: flex-end;
+        border-left: none;
+        border-top: 1px solid var(--color-quinary);
+        padding: 10px 15px;
+    }
+}
