@@ -1,0 +1,128 @@
+/* Estilos para el botón flotante de cerrar sesión */
+:root {
+    --color-primary: #1AD659;
+    --color-secondary: #3EE074;
+    --color-tertiary: #5FF791;
+    --color-quaternary: #8CFFB3;
+    --color-quinary: #deffe9;
+    --color-error: #FF5252;
+    --color-error-dark: #E53935;
+    --color-warning: #FFC107;
+    --color-info: #2196F3;
+    --border-radius: 12px;
+    --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s ease;
+}
+
+.boton-cerrar-sesion-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.boton-cerrar-sesion {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-error);
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    position: relative;
+    z-index: 2;
+}
+
+.boton-cerrar-sesion:hover {
+    background-color: var(--color-error-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.boton-cerrar-sesion:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la confirmación */
+.confirmacion-cerrar-sesion {
+    background-color: white;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    animation: slideIn 0.3s ease forwards;
+    position: relative;
+}
+
+.confirmacion-cerrar-sesion p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--color-error);
+    white-space: nowrap;
+}
+
+.confirmacion-cerrar-sesion::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 10px 0 10px 10px;
+    border-style: solid;
+    border-color: transparent transparent transparent white;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .boton-cerrar-sesion-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .boton-cerrar-sesion {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .boton-cerrar-sesion-container {
+        bottom: 15px;
+        right: 15px;
+    }
+    
+    .boton-cerrar-sesion {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .confirmacion-cerrar-sesion {
+        padding: 8px 12px;
+    }
+    
+    .confirmacion-cerrar-sesion p {
+        font-size: 0.9rem;
+    }
+}
