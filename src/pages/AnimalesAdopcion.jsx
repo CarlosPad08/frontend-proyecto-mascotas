@@ -47,7 +47,6 @@ function AnimalesAdopcion() {
       <Navbar />
       <div className="animales-adopcion-container_animales_adopcion">
         <div className="animales-adopcion-banner">
-          <img src="../public/publicidad.webp" alt="Banner" />
           <CarruselBanner />
         </div>
 

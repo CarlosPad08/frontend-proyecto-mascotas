@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import '../../public/carrusel1.png';
 import '../../public/carrusel2.png';
 import '../../public/carrusel3.png';
-import '../../public/carrusel4.jpg';
-import '../../public/carrusel5.jpg';
+import '../../public/carrusel4.png';
 import '../styles/carruselBanner.css';
 
 
-const imagenes = ['carrusel3.png', 'carrusel5.jpg', 'carrusel2.png', 'carrusel1.png', 'carrusel4.jpg'];
+const imagenes = ['carrusel3.png', 'carrusel2.png', 'carrusel1.png', 'carrusel4.png'];
 
 const CarruselBanner = () => {
   const [indiceActual, setIndiceActual] = useState(0);

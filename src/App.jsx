@@ -11,6 +11,7 @@ import Profile from './pages/Profile.jsx'
 import Veterinarias from './pages/Veterinarias.jsx';
 import Guarderias from './pages/Guarderias.jsx';
 import MisMascotas from './pages/MisMascotas.jsx';
+import Contacto from './pages/Contacto.jsx';
 import withCerrarSesion from './components/withCerrarSesion';
 import './App.css';
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/mascotas" element={<MisMascotasConCerrarSesion />} />
         <Route path="/error-404" element={<NotFound/>} />
         <Route path="/sobre-nosotros" element={<SobreNosotros/>} />
+        <Route path="/contacto" element={<Contacto />} />
         <Route path="*" element={<NotFound/>} />
       </Routes>
     </Router>
