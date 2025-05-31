@@ -17,7 +17,7 @@ function inicio () {
             <h1>El lugar seguro<br />para tus mascotas</h1>
             <p>Gestiona a tus mascotas, encuentra centros veterinarios, guarderías y ¿por que no? adopta un nuevo amigo para tu familia.</p>
             <div className="inicio-hero-cta">
-              <a className="inicio-btn inicio-btn-primary" href="#">Mis mascotas</a>
+              <a className="inicio-btn inicio-btn-primary" href="/mascotas">Mis mascotas</a>
               <a className="inicio-btn inicio-btn-secondary" href="#">Ver ofertas</a>
             </div>
           </div>

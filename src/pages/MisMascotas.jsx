@@ -44,8 +44,7 @@ const MisMascotas = () => {
             }
             
             try {
-                // const response = await axiosInstance.get(`/api/mascotas/buscar/${userId}`);
-                const response = await axiosInstance.get(`/api/mascotas`);
+                const response = await axiosInstance.get(`/api/mascotas/usuario/${userId}`);
                 setMascotas(response.data);
                 setLoading(false);
             } catch (err) {
