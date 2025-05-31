@@ -41,13 +41,9 @@
     position: fixed;
     top: 0;
     left: 0;
-    max-width: 100%;
-    height: 100%;
-}
-
-.animales-adopcion-banner img {
-    width: 100%;
+    width: 20%; /* Coincide con el ancho de la columna en el grid */
     height: 100vh;
+    overflow: hidden;
 }
 
 .animales-adopcion-header-section {

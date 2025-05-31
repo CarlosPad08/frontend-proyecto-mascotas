@@ -7,12 +7,19 @@ const ErrorAlert = ({ message, onClose }) => {
       onClose();
     }, 3000);
 
-    return () => clearTimeout(timer);
+    // Prevenir scroll mientras la alerta está visible
+    document.body.style.overflow = 'hidden';
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = 'auto';
+    };
   }, [onClose]);
 
   return (
-    <div className="error-alert">
-      {message}
+    <div className="modal-overlay">
+      <div className="error-alert">
+        {message}
+      </div>
     </div>
   );
 };
