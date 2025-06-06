@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaPencilAlt, FaArrowLeft } from 'react-icons/fa';
+import AxiosInstance from '../api/axios.js';
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaPencilAlt, FaArrowLeft, FaImage, FaUpload, FaSpinner } from 'react-icons/fa';
 import { MdPets } from 'react-icons/md';
 import { Link } from 'react-router-dom';
+import { uploadImageToCloudinary } from '../utils/uploadImage.js';
 import '../styles/profile.css';
 
 const Profile = () => {
@@ -11,7 +13,8 @@ const Profile = () => {
         apellido: '',
         email: '',
         telefono: '',
-        direccion: ''
+        direccion: '',
+        imagen: ''
     });
 
     // Estado para controlar el modo de edición
@@ -19,6 +22,11 @@ const Profile = () => {
     
     // Estado para almacenar los datos temporales durante la edición
     const [tempData, setTempData] = useState({});
+
+    // Estados para manejar la imagen de perfil
+    const [imagenPreview, setImagenPreview] = useState(null);
+    const [cargandoImagen, setCargandoImagen] = useState(false);
+    const [progresoSubida, setProgresoSubida] = useState(0);
 
     // Efecto para cargar los datos del usuario desde localStorage al montar el componente
     useEffect(() => {
@@ -31,7 +39,8 @@ const Profile = () => {
                     apellido: parsedUser.usuario?.apellido || '',
                     email: parsedUser.usuario?.email || '',
                     telefono: parsedUser.usuario?.telefono || '',
-                    direccion: parsedUser.usuario?.direccion || ''
+                    direccion: parsedUser.usuario?.direccion || '',
+                    imagen: parsedUser.usuario?.imagen || ''
                 });
             } catch (error) {
                 console.error('Error al parsear los datos del usuario:', error);
@@ -42,6 +51,7 @@ const Profile = () => {
     // Función para manejar el inicio de la edición
     const handleEditClick = () => {
         setTempData({...userData});
+        setImagenPreview(userData.imagen);
         setIsEditing(true);
     };
 
@@ -54,16 +64,120 @@ const Profile = () => {
         });
     };
 
+    // Función para manejar la subida de imágenes de perfil
+    const handleImageUpload = async (e) => {
+        try {
+            const file = e.target.files[0];
+
+            if (file) {
+                // Iniciar proceso de carga
+                setCargandoImagen(true);
+                setProgresoSubida(0);
+                
+                // Simular progreso de carga
+                const intervalo = setInterval(() => {
+                    setProgresoSubida(prev => {
+                        const nuevoProgreso = prev + 10;
+                        return nuevoProgreso > 90 ? 90 : nuevoProgreso;
+                    });
+                }, 200);
+                
+                const imageUrl = URL.createObjectURL(file);
+                setImagenPreview(imageUrl);
+
+                const uploadedUrl = await uploadImageToCloudinary(file);
+
+                if (uploadedUrl) {
+                    setTempData((prevData) => ({
+                        ...prevData,
+                        imagen: uploadedUrl,
+                    }));
+                    
+                    // Completar la barra de progreso
+                    setProgresoSubida(100);
+                    // Limpiar intervalo
+                    clearInterval(intervalo);
+                    // Indicar que la carga ha terminado
+                    setCargandoImagen(false);
+                } else {
+                    console.error("Error: La URL subida es inválida o no se generó correctamente.");
+                    setCargandoImagen(false);
+                    clearInterval(intervalo);
+                }
+            } else {
+                console.warn("Advertencia: No se seleccionó ningún archivo.");
+            }
+        } catch (error) {
+            console.error("Error durante la carga de la imagen:", error);
+            setCargandoImagen(false);
+            setProgresoSubida(0);
+        }
+    };
+
     // Función para guardar los cambios
-    const handleSaveChanges = () => {
-        setUserData(tempData);
-        localStorage.setItem('userData', JSON.stringify(tempData));
-        setIsEditing(false);
+    const handleSaveChanges = async () => {
+        try {
+            // Obtener el id del usuario desde localStorage
+            const storedUserData = localStorage.getItem('userData');
+            if (!storedUserData) {
+                throw new Error('No se encontró información del usuario');
+            }
+            
+            const parsedUserData = JSON.parse(storedUserData);
+            const userId = parsedUserData.usuario?.usuario_id;
+            
+            if (!userId) {
+                throw new Error('ID de usuario no encontrado');
+            }
+            
+            console.log('User ID:', userId);
+            console.log('Datos a actualizar:', tempData);
+            
+            // Realizar la petición al backend
+            const response = await AxiosInstance.put(`/api/usuarios/${userId}`, tempData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (response.status !== 200) {
+                throw new Error('Error al actualizar el perfil');
+            }
+            
+            const updatedUser = response.data;
+            console.log('Respuesta del servidor:', updatedUser);
+            
+            // Actualizar el estado con los datos que tenemos en tempData
+            // ya que sabemos que la actualización fue exitosa
+            setUserData({...tempData});
+            
+            // Actualizar en localStorage manteniendo la estructura correcta
+            const updatedLocalStorage = {
+                ...parsedUserData,
+                usuario: {
+                    ...parsedUserData.usuario,
+                    ...tempData // Usamos directamente los datos que enviamos
+                }
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(updatedLocalStorage));
+            setIsEditing(false);
+            
+            // Mostrar mensaje de éxito
+            alert('Perfil actualizado correctamente');
+            
+        } catch (error) {
+            console.error('Error al actualizar el perfil:', error);
+            alert('Ha ocurrido un error al actualizar el perfil: ' + error.message);
+        }
     };
 
     // Función para cancelar la edición
     const handleCancelEdit = () => {
         setIsEditing(false);
+        setImagenPreview(null);
+        setCargandoImagen(false);
+        setProgresoSubida(0);
     };
 
     // Función para generar las iniciales del usuario para el avatar
@@ -86,7 +200,11 @@ const Profile = () => {
             <div className="profile-content">
                 <div className="profile-avatar-section">
                     <div className="profile-avatar">
-                        {getUserInitials()}
+                        {userData.imagen ? (
+                            <img src={userData.imagen} alt="Foto de perfil" className="profile-avatar-image" />
+                        ) : (
+                            getUserInitials()
+                        )}
                     </div>
                     {!isEditing && (
                         <button className="edit-profile-btn" onClick={handleEditClick}>
@@ -99,6 +217,53 @@ const Profile = () => {
                     {isEditing ? (
                         // Formulario de edición
                         <div className="profile-edit-form">
+                            {/* Sección de imagen de perfil */}
+                            <div className="form-group profile-image-section">
+                                <label>Imagen de perfil</label>
+                                <div className="imagen-upload-container">
+                                    <div className="imagen-preview-area">
+                                        {imagenPreview ? (
+                                            <img src={imagenPreview} alt="Vista previa" className="imagen-preview profile-preview" />
+                                        ) : (
+                                            <div className="imagen-placeholder profile-placeholder">
+                                                <FaImage />
+                                                <p>Sin imagen de perfil</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                    
+                                    <div className="imagen-upload-controls">
+                                        <label htmlFor="profile-image-upload" className="upload-btn">
+                                            <FaUpload /> Seleccionar imagen
+                                        </label>
+                                        <input 
+                                            type="file" 
+                                            id="profile-image-upload" 
+                                            accept="image/*" 
+                                            onChange={handleImageUpload} 
+                                            className="hidden-upload-input"
+                                        />
+                                        <p className="upload-help-text">Sube una foto para tu perfil</p>
+                                        
+                                        {/* Indicador de progreso */}
+                                        {cargandoImagen && (
+                                            <div className="upload-progress-container">
+                                                <div className="upload-progress-bar" style={{ width: `${progresoSubida}%` }}></div>
+                                                <div className="upload-spinner">
+                                                    <FaSpinner className="spin-animation" /> Subiendo imagen...
+                                                </div>
+                                            </div>
+                                        )}
+                                        
+                                        {!cargandoImagen && progresoSubida === 100 && (
+                                            <div className="upload-success">
+                                                <p>Imagen subida correctamente</p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="form-group">
                                 <label htmlFor="nombre">
                                     <FaUser /> Nombre
